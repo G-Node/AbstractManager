@@ -19,6 +19,7 @@
 @dynamic text;
 @dynamic title;
 @dynamic type;
+@dynamic aid;
 @dynamic affiliations;
 @dynamic authors;
 

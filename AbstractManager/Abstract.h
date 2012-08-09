@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic) int16_t type;
+@property (nonatomic) int32_t aid;
 @property (nonatomic, retain) NSOrderedSet *affiliations;
 @property (nonatomic, retain) NSOrderedSet *authors;
 @end

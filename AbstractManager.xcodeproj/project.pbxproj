@@ -14,16 +14,17 @@
 		E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68A615D2625E00063DBF /* AppDelegate.m */; };
 		E9DD68AA15D2625E00063DBF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68A815D2625E00063DBF /* MainMenu.xib */; };
 		E9DD68B215D2627F00063DBF /* Abstracts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68B015D2627F00063DBF /* Abstracts.xcdatamodeld */; };
-		E9DD68CE15D262D800063DBF /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68CD15D262D800063DBF /* Organization.m */; };
-		E9DD68D115D262D800063DBF /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68D015D262D800063DBF /* Abstract.m */; };
-		E9DD68D415D262D800063DBF /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68D315D262D800063DBF /* Author.m */; };
-		E9DD68D715D262D800063DBF /* Affiliation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68D615D262D800063DBF /* Affiliation.m */; };
 		E9DD68DE15D262F700063DBF /* Abstract+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68D915D262F700063DBF /* Abstract+Create.m */; };
 		E9DD68DF15D262F700063DBF /* Author+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68DB15D262F700063DBF /* Author+Create.m */; };
 		E9DD68E015D262F700063DBF /* Organization+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68DD15D262F700063DBF /* Organization+Create.m */; };
 		E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68E215D265DC00063DBF /* Abstract+HTML.m */; };
 		E9DD68E515D2669E00063DBF /* BCCN_Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */; };
 		E9DD68E715D266AA00063DBF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD68E615D266AA00063DBF /* WebKit.framework */; };
+		E9DD691015D2E6D300063DBF /* Affiliation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD690F15D2E6D300063DBF /* Affiliation.m */; };
+		E9DD691315D2E6D300063DBF /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD691215D2E6D300063DBF /* Organization.m */; };
+		E9DD691615D2E6D300063DBF /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD691515D2E6D300063DBF /* Author.m */; };
+		E9DD691915D2E6D300063DBF /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD691815D2E6D300063DBF /* Abstract.m */; };
+		E9DD692715D3CD7600063DBF /* Abstract+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD692615D3CD7600063DBF /* Abstract+XML.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,14 +42,6 @@
 		E9DD68A615D2625E00063DBF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E9DD68A915D2625E00063DBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E9DD68B115D2627F00063DBF /* Abstracts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Abstracts.xcdatamodel; sourceTree = "<group>"; };
-		E9DD68CC15D262D800063DBF /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
-		E9DD68CD15D262D800063DBF /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
-		E9DD68CF15D262D800063DBF /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
-		E9DD68D015D262D800063DBF /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
-		E9DD68D215D262D800063DBF /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
-		E9DD68D315D262D800063DBF /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
-		E9DD68D515D262D800063DBF /* Affiliation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Affiliation.h; sourceTree = "<group>"; };
-		E9DD68D615D262D800063DBF /* Affiliation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Affiliation.m; sourceTree = "<group>"; };
 		E9DD68D815D262F700063DBF /* Abstract+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Abstract+Create.h"; path = "../Abstract+Create.h"; sourceTree = "<group>"; };
 		E9DD68D915D262F700063DBF /* Abstract+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Abstract+Create.m"; path = "../Abstract+Create.m"; sourceTree = "<group>"; };
 		E9DD68DA15D262F700063DBF /* Author+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Author+Create.h"; path = "../Author+Create.h"; sourceTree = "<group>"; };
@@ -59,6 +52,16 @@
 		E9DD68E215D265DC00063DBF /* Abstract+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Abstract+HTML.m"; path = "../Abstract+HTML.m"; sourceTree = "<group>"; };
 		E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = BCCN_Logo.icns; sourceTree = "<group>"; };
 		E9DD68E615D266AA00063DBF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		E9DD690E15D2E6D200063DBF /* Affiliation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Affiliation.h; sourceTree = "<group>"; };
+		E9DD690F15D2E6D300063DBF /* Affiliation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Affiliation.m; sourceTree = "<group>"; };
+		E9DD691115D2E6D300063DBF /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
+		E9DD691215D2E6D300063DBF /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
+		E9DD691415D2E6D300063DBF /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
+		E9DD691515D2E6D300063DBF /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
+		E9DD691715D2E6D300063DBF /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
+		E9DD691815D2E6D300063DBF /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
+		E9DD692515D3CD7600063DBF /* Abstract+XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Abstract+XML.h"; sourceTree = "<group>"; };
+		E9DD692615D3CD7600063DBF /* Abstract+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Abstract+XML.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,21 +144,23 @@
 			children = (
 				E9DD68E115D265DC00063DBF /* Abstract+HTML.h */,
 				E9DD68E215D265DC00063DBF /* Abstract+HTML.m */,
+				E9DD692515D3CD7600063DBF /* Abstract+XML.h */,
+				E9DD692615D3CD7600063DBF /* Abstract+XML.m */,
 				E9DD68D815D262F700063DBF /* Abstract+Create.h */,
 				E9DD68D915D262F700063DBF /* Abstract+Create.m */,
 				E9DD68DA15D262F700063DBF /* Author+Create.h */,
 				E9DD68DB15D262F700063DBF /* Author+Create.m */,
 				E9DD68DC15D262F700063DBF /* Organization+Create.h */,
 				E9DD68DD15D262F700063DBF /* Organization+Create.m */,
-				E9DD68D515D262D800063DBF /* Affiliation.h */,
-				E9DD68D615D262D800063DBF /* Affiliation.m */,
-				E9DD68D215D262D800063DBF /* Author.h */,
-				E9DD68D315D262D800063DBF /* Author.m */,
-				E9DD68CF15D262D800063DBF /* Abstract.h */,
-				E9DD68D015D262D800063DBF /* Abstract.m */,
-				E9DD68CC15D262D800063DBF /* Organization.h */,
-				E9DD68CD15D262D800063DBF /* Organization.m */,
 				E9DD68B015D2627F00063DBF /* Abstracts.xcdatamodeld */,
+				E9DD690E15D2E6D200063DBF /* Affiliation.h */,
+				E9DD690F15D2E6D300063DBF /* Affiliation.m */,
+				E9DD691115D2E6D300063DBF /* Organization.h */,
+				E9DD691215D2E6D300063DBF /* Organization.m */,
+				E9DD691415D2E6D300063DBF /* Author.h */,
+				E9DD691515D2E6D300063DBF /* Author.m */,
+				E9DD691715D2E6D300063DBF /* Abstract.h */,
+				E9DD691815D2E6D300063DBF /* Abstract.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -228,14 +233,15 @@
 				E9DD68A015D2625E00063DBF /* main.m in Sources */,
 				E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */,
 				E9DD68B215D2627F00063DBF /* Abstracts.xcdatamodeld in Sources */,
-				E9DD68CE15D262D800063DBF /* Organization.m in Sources */,
-				E9DD68D115D262D800063DBF /* Abstract.m in Sources */,
-				E9DD68D415D262D800063DBF /* Author.m in Sources */,
-				E9DD68D715D262D800063DBF /* Affiliation.m in Sources */,
 				E9DD68DE15D262F700063DBF /* Abstract+Create.m in Sources */,
 				E9DD68DF15D262F700063DBF /* Author+Create.m in Sources */,
 				E9DD68E015D262F700063DBF /* Organization+Create.m in Sources */,
 				E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */,
+				E9DD691015D2E6D300063DBF /* Affiliation.m in Sources */,
+				E9DD691315D2E6D300063DBF /* Organization.m in Sources */,
+				E9DD691615D2E6D300063DBF /* Author.m in Sources */,
+				E9DD691915D2E6D300063DBF /* Abstract.m in Sources */,
+				E9DD692715D3CD7600063DBF /* Abstract+XML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +367,7 @@
 				E9DD68AF15D2625E00063DBF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
