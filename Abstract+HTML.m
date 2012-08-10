@@ -10,6 +10,7 @@
 #import "Author.h"
 #import "Organization.h"
 #import "Affiliation.h"
+#import "Correspondence.h"
 
 @implementation NSString(HTML)
 
@@ -27,7 +28,7 @@
     NSMutableString *html = [[NSMutableString alloc] init];
     
     [html appendString:@"<html><body>"];
-    
+    [html appendFormat:@"<div><small>%@</small></div>", self.topic];
     [html appendFormat:@"<div><h2>%@</h2></div>", self.title];
     
     [html appendString:@"<div><h3>"];
@@ -41,6 +42,12 @@
                 [html appendFormat:@"%ld ", i+1];
             }
         }
+        
+        for (Correspondence *cor in self.correspondenceAt) {
+            if (cor.ofAuthor == author)
+                [html appendString:@"*"];
+        }
+        
         [html appendFormat:@"</sup><br/>"];
         
     }
@@ -56,6 +63,11 @@
             [html appendFormat:@"<sup>%ld</sup> %@, %@<br/>", i+1, org.name, org.country];
         }
     }
+    
+    for (Correspondence *cor in self.correspondenceAt) {
+            [html appendFormat:@"<sup>*</sup> %@ ", cor.email];
+    }
+    [html appendString:@"<br/>"];
     
     [html appendFormat:@"<p>%@</p>", [self.text formatHTML]];
     

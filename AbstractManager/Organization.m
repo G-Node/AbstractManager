@@ -2,7 +2,7 @@
 //  Organization.m
 //  AbstractManager
 //
-//  Created by Christian Kellner on 8/8/12.
+//  Created by Christian Kellner on 8/9/12.
 //  Copyright (c) 2012 G-Node. All rights reserved.
 //
 

@@ -20,11 +20,14 @@
 		E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68E215D265DC00063DBF /* Abstract+HTML.m */; };
 		E9DD68E515D2669E00063DBF /* BCCN_Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */; };
 		E9DD68E715D266AA00063DBF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD68E615D266AA00063DBF /* WebKit.framework */; };
-		E9DD691015D2E6D300063DBF /* Affiliation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD690F15D2E6D300063DBF /* Affiliation.m */; };
-		E9DD691315D2E6D300063DBF /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD691215D2E6D300063DBF /* Organization.m */; };
-		E9DD691615D2E6D300063DBF /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD691515D2E6D300063DBF /* Author.m */; };
-		E9DD691915D2E6D300063DBF /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD691815D2E6D300063DBF /* Abstract.m */; };
 		E9DD692715D3CD7600063DBF /* Abstract+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD692615D3CD7600063DBF /* Abstract+XML.m */; };
+		E9DD698F15D4290A00063DBF /* Correspondence+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD698E15D4290A00063DBF /* Correspondence+Create.m */; };
+		E9DD699515D4449200063DBF /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD699415D4449200063DBF /* Author.m */; };
+		E9DD699815D4449300063DBF /* Correspondence.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD699715D4449200063DBF /* Correspondence.m */; };
+		E9DD699B15D4449300063DBF /* Affiliation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD699A15D4449300063DBF /* Affiliation.m */; };
+		E9DD699E15D4449300063DBF /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD699D15D4449300063DBF /* Organization.m */; };
+		E9DD69A115D44CDB00063DBF /* Abstract+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD69A015D44CDB00063DBF /* Abstract+JSON.m */; };
+		E9DD69A415D45F2C00063DBF /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD69A315D45F2C00063DBF /* Abstract.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,16 +55,22 @@
 		E9DD68E215D265DC00063DBF /* Abstract+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Abstract+HTML.m"; path = "../Abstract+HTML.m"; sourceTree = "<group>"; };
 		E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = BCCN_Logo.icns; sourceTree = "<group>"; };
 		E9DD68E615D266AA00063DBF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		E9DD690E15D2E6D200063DBF /* Affiliation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Affiliation.h; sourceTree = "<group>"; };
-		E9DD690F15D2E6D300063DBF /* Affiliation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Affiliation.m; sourceTree = "<group>"; };
-		E9DD691115D2E6D300063DBF /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
-		E9DD691215D2E6D300063DBF /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
-		E9DD691415D2E6D300063DBF /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
-		E9DD691515D2E6D300063DBF /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
-		E9DD691715D2E6D300063DBF /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
-		E9DD691815D2E6D300063DBF /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
 		E9DD692515D3CD7600063DBF /* Abstract+XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Abstract+XML.h"; sourceTree = "<group>"; };
 		E9DD692615D3CD7600063DBF /* Abstract+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Abstract+XML.m"; sourceTree = "<group>"; };
+		E9DD698D15D4290A00063DBF /* Correspondence+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Correspondence+Create.h"; sourceTree = "<group>"; };
+		E9DD698E15D4290A00063DBF /* Correspondence+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Correspondence+Create.m"; sourceTree = "<group>"; };
+		E9DD699315D4449200063DBF /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
+		E9DD699415D4449200063DBF /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
+		E9DD699615D4449200063DBF /* Correspondence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Correspondence.h; sourceTree = "<group>"; };
+		E9DD699715D4449200063DBF /* Correspondence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Correspondence.m; sourceTree = "<group>"; };
+		E9DD699915D4449300063DBF /* Affiliation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Affiliation.h; sourceTree = "<group>"; };
+		E9DD699A15D4449300063DBF /* Affiliation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Affiliation.m; sourceTree = "<group>"; };
+		E9DD699C15D4449300063DBF /* Organization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
+		E9DD699D15D4449300063DBF /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
+		E9DD699F15D44CDB00063DBF /* Abstract+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Abstract+JSON.h"; sourceTree = "<group>"; };
+		E9DD69A015D44CDB00063DBF /* Abstract+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Abstract+JSON.m"; sourceTree = "<group>"; };
+		E9DD69A215D45F2C00063DBF /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
+		E9DD69A315D45F2C00063DBF /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +155,8 @@
 				E9DD68E215D265DC00063DBF /* Abstract+HTML.m */,
 				E9DD692515D3CD7600063DBF /* Abstract+XML.h */,
 				E9DD692615D3CD7600063DBF /* Abstract+XML.m */,
+				E9DD699F15D44CDB00063DBF /* Abstract+JSON.h */,
+				E9DD69A015D44CDB00063DBF /* Abstract+JSON.m */,
 				E9DD68D815D262F700063DBF /* Abstract+Create.h */,
 				E9DD68D915D262F700063DBF /* Abstract+Create.m */,
 				E9DD68DA15D262F700063DBF /* Author+Create.h */,
@@ -153,14 +164,18 @@
 				E9DD68DC15D262F700063DBF /* Organization+Create.h */,
 				E9DD68DD15D262F700063DBF /* Organization+Create.m */,
 				E9DD68B015D2627F00063DBF /* Abstracts.xcdatamodeld */,
-				E9DD690E15D2E6D200063DBF /* Affiliation.h */,
-				E9DD690F15D2E6D300063DBF /* Affiliation.m */,
-				E9DD691115D2E6D300063DBF /* Organization.h */,
-				E9DD691215D2E6D300063DBF /* Organization.m */,
-				E9DD691415D2E6D300063DBF /* Author.h */,
-				E9DD691515D2E6D300063DBF /* Author.m */,
-				E9DD691715D2E6D300063DBF /* Abstract.h */,
-				E9DD691815D2E6D300063DBF /* Abstract.m */,
+				E9DD69A215D45F2C00063DBF /* Abstract.h */,
+				E9DD69A315D45F2C00063DBF /* Abstract.m */,
+				E9DD699C15D4449300063DBF /* Organization.h */,
+				E9DD699D15D4449300063DBF /* Organization.m */,
+				E9DD699915D4449300063DBF /* Affiliation.h */,
+				E9DD699A15D4449300063DBF /* Affiliation.m */,
+				E9DD699615D4449200063DBF /* Correspondence.h */,
+				E9DD699715D4449200063DBF /* Correspondence.m */,
+				E9DD699315D4449200063DBF /* Author.h */,
+				E9DD699415D4449200063DBF /* Author.m */,
+				E9DD698D15D4290A00063DBF /* Correspondence+Create.h */,
+				E9DD698E15D4290A00063DBF /* Correspondence+Create.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -237,11 +252,14 @@
 				E9DD68DF15D262F700063DBF /* Author+Create.m in Sources */,
 				E9DD68E015D262F700063DBF /* Organization+Create.m in Sources */,
 				E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */,
-				E9DD691015D2E6D300063DBF /* Affiliation.m in Sources */,
-				E9DD691315D2E6D300063DBF /* Organization.m in Sources */,
-				E9DD691615D2E6D300063DBF /* Author.m in Sources */,
-				E9DD691915D2E6D300063DBF /* Abstract.m in Sources */,
 				E9DD692715D3CD7600063DBF /* Abstract+XML.m in Sources */,
+				E9DD698F15D4290A00063DBF /* Correspondence+Create.m in Sources */,
+				E9DD699515D4449200063DBF /* Author.m in Sources */,
+				E9DD699815D4449300063DBF /* Correspondence.m in Sources */,
+				E9DD699B15D4449300063DBF /* Affiliation.m in Sources */,
+				E9DD699E15D4449300063DBF /* Organization.m in Sources */,
+				E9DD69A115D44CDB00063DBF /* Abstract+JSON.m in Sources */,
+				E9DD69A415D45F2C00063DBF /* Abstract.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

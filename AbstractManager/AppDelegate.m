@@ -34,6 +34,8 @@
 #import "Author+Create.h"
 #import "Affiliation.h"
 #import "Organization+Create.h"
+#import "Correspondence+Create.h"
+#import "Abstract+JSON.h"
 
 #import <WebKit/WebKit.h>
 
@@ -122,7 +124,7 @@ typedef enum _GroupType {
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-    return [appSupportURL URLByAppendingPathComponent:@"org.g-node.DatabaseFiller"];
+    return [appSupportURL URLByAppendingPathComponent:@"org.g-node.AbstractManager"];
 }
 
 - (NSManagedObjectModel *)managedObjectModel
@@ -367,6 +369,18 @@ typedef enum _GroupType {
         }
     }];
 }
+- (IBAction)deleteAbstract:(id)sender
+{
+    NSInteger row = [self.abstractOutline selectedRow];
+    id item = [self.abstractOutline itemAtRow:row];
+    
+    if (! [item isKindOfClass:[Abstract class]]) {
+        return;
+    }
+
+    Abstract *abstract = item;
+    
+}
 
 // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
 - (IBAction)saveAction:(id)sender
@@ -387,11 +401,22 @@ typedef enum _GroupType {
 {
     NSManagedObjectContext *context = self.managedObjectContext;
     
-    int32_t count = 1;
+    int32_t articelCount = 1;
+    int32_t talkCount = 1;
     for (NSDictionary *absDict in abstracts) {
+        int32_t aid;
+        
+        NSString *type = [absDict objectForKey:@"type"];
+        if ([type isEqualToString:@"Poster"]) {
+            aid = articelCount;
+            articelCount++;
+        } else {
+            aid = talkCount | (GT_I << 16);
+            talkCount++;
+        }
         
         NSLog(@"%@\n", [absDict objectForKey:@"title"]);
-        Abstract *abstract = [Abstract abstractForJSON:absDict withId:count inManagedObjectContext:context];
+        Abstract *abstract = [Abstract abstractForJSON:absDict withId:aid inManagedObjectContext:context];
         
         // Author
         NSArray *authors = [absDict objectForKey:@"authors"];
@@ -405,6 +430,29 @@ typedef enum _GroupType {
         
         if (authorSet.count > 0)
             abstract.authors = authorSet;
+        
+        //Correspondences
+        NSArray *corr = [Correspondence parseText:[absDict objectForKey:@"correspondence"]];
+        NSMutableSet *corrSet = [[NSMutableSet alloc] init];
+        NSUInteger corIdx = 0;
+        for (NSString *email in corr) {
+            
+            for (NSUInteger i = corIdx; i < authors.count; i++) {
+                id isCorresponding = [[authors objectAtIndex:i] objectForKey:@"corresponding"];
+                if (isCorresponding) {
+                    Author *author = [abstract.authors objectAtIndex:i];
+                    Correspondence *cor = [Correspondence correspondenceAt:email
+                                                                 forAuthor:author
+                                                    inManagedObjectContext:context];
+                    [corrSet addObject:cor];
+                    corIdx = i + 1;
+                    break;
+                }
+            }
+        }
+        
+        if (corrSet)
+            abstract.correspondenceAt = corrSet;
         
         // Affiliations
         NSMutableOrderedSet *affiliations = [[NSMutableOrderedSet alloc] init];
@@ -438,7 +486,6 @@ typedef enum _GroupType {
         }
         
         abstract.affiliations = affiliations;
-        count++;
     }
 }
 
@@ -499,7 +546,10 @@ typedef enum _GroupType {
 - (void) saveAbstractsToLocation:(NSString *)path
 {
     NSMutableArray *all = [[NSMutableArray alloc] initWithCapacity:self.abstracts.count];
-    for (Abstract *abstract in self.abstracts) {
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aid" ascending:YES];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    NSArray *sortedAbstracts = [self.abstracts sortedArrayUsingDescriptors:sortDescriptors];
+    for (Abstract *abstract in sortedAbstracts) {
         NSDictionary *dict = [abstract json];
         [all addObject:dict];
     }
@@ -608,39 +658,6 @@ typedef enum _GroupType {
     return self.abstracts.count;
 }
 
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn
-            row:(NSInteger)rowIndex
-{
-    NSLog (@"%@\n", aTableColumn.identifier);
-    
-    Abstract *abstract = (Abstract *) [self.abstracts objectAtIndex:rowIndex];
-    
-    NSString *text;
-    if ([aTableColumn.identifier isEqualToString:@"author"]) {
-        Author *author = [abstract.authors objectAtIndex:0];
-        text = author.name;
-    } else {
-        text = abstract.title;
-    }
-    
-    return text;
-}
-
-#pragma - TableViewDelegate
-- (void) tableViewSelectionDidChange: (NSNotification *) notification
-{
-    
-    if ([notification object] != self.abstractList)
-        return;
-    
-    NSInteger row = [self.abstractList selectedRow];
-    
-    Abstract *abstract = (Abstract *) [self.abstracts objectAtIndex:row];
-    NSString *html = [abstract renderHTML];
-    NSURL *base = [NSURL URLWithString:@"http://"];
-    [self.abstractView.mainFrame loadHTMLString:html baseURL:base];
-    NSLog(@"RowSelected %ld %@", row, html);
-}
 
 #pragma - NSOutlineViewDataSource
 - (NSInteger) outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
@@ -687,16 +704,22 @@ typedef enum _GroupType {
 
         if ([tableColumn.identifier isEqualToString:@"author"]) {
             text = group.name;
-        } else {
+        } else if ([tableColumn.identifier isEqualToString:@"title"])  {
             text = [NSString stringWithFormat:@"%ld", group.abstracts.count];
+        } else  {
+            text = @"";
         }
     } else if ([item isKindOfClass:[Abstract class]]) {
         Abstract *abstract = item;
         if ([tableColumn.identifier isEqualToString:@"author"]) {
             Author *author = [abstract.authors objectAtIndex:0];
             text = author.name;
-        } else {
+        } else if ([tableColumn.identifier isEqualToString:@"title"]) {
             text = abstract.title;
+        } else if ([tableColumn.identifier isEqualToString:@"topic"]) {
+            text = abstract.topic;
+        } else if ([tableColumn.identifier isEqualToString:@"nfigures"]) {
+            text = [NSString stringWithFormat:@"%d", abstract.nfigures];
         }
     }
     return text;
@@ -759,6 +782,36 @@ typedef enum _GroupType {
     }
     
     return result;
+}
+
+- (Abstract *) removeAbstract:(int32_t) aid
+{
+    NSOutlineView *outlineView = self.abstractOutline;
+    
+    NSUInteger ngroups = self.groups.count;
+    NSUInteger groupIndex = ((aid & (0xFFFF << 16)) + ngroups-1) % ngroups;
+    NSUInteger abstractIndex = (aid & 0xFFFF) - 1; // abstract ids start at 1
+    NSLog(@"aid: %d [%lu %lu]\n", aid, groupIndex, abstractIndex);
+    
+    AbstractGroup *sourceGroup = [self.groups objectAtIndex:groupIndex];
+    Abstract *abstract = [sourceGroup.abstracts objectAtIndex:abstractIndex];
+    NSLog(@"sourceGroupIdx: %lu, %@\n", groupIndex, sourceGroup.name);
+    [outlineView beginUpdates];
+    
+    [sourceGroup.abstracts removeObjectAtIndex:abstractIndex];
+    for (NSUInteger i = abstractIndex; i < sourceGroup.abstracts.count; i++) {
+        Abstract *A = [sourceGroup.abstracts objectAtIndex:i];
+        int32_t newAid = (sourceGroup.type << 16) | (int32_t) (i + 1);
+        NSLog(@"S: new aid: %d [%lu]\n", newAid, i);
+        A.aid = newAid;
+    }
+    
+    [outlineView removeItemsAtIndexes:[NSIndexSet indexSetWithIndex:abstractIndex]
+                             inParent:sourceGroup
+                        withAnimation:NSTableViewAnimationEffectNone];
+    
+    [outlineView endUpdates];
+    return abstract;
 }
 
 - (BOOL) outlineView:(NSOutlineView *)outlineView

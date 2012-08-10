@@ -14,5 +14,4 @@
 + (Abstract *) abstractForJSON:(NSDictionary *)json
                         withId:(int32_t) abstractID
         inManagedObjectContext:(NSManagedObjectContext *)context;
-- (NSDictionary *) json;
 @end

@@ -1,21 +1,20 @@
 //
-//  Affiliation.m
+//  Correspondence.m
 //  AbstractManager
 //
 //  Created by Christian Kellner on 8/9/12.
 //  Copyright (c) 2012 G-Node. All rights reserved.
 //
 
-#import "Affiliation.h"
+#import "Correspondence.h"
 #import "Abstract.h"
 #import "Author.h"
-#import "Organization.h"
 
 
-@implementation Affiliation
+@implementation Correspondence
 
+@dynamic email;
 @dynamic forAbstract;
-@dynamic ofAuthors;
-@dynamic toOrganization;
+@dynamic ofAuthor;
 
 @end

@@ -2,14 +2,14 @@
 //  Abstract.h
 //  AbstractManager
 //
-//  Created by Christian Kellner on 8/8/12.
+//  Created by Christian Kellner on 8/9/12.
 //  Copyright (c) 2012 G-Node. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Affiliation, Author;
+@class Affiliation, Author, Correspondence;
 
 @interface Abstract : NSManagedObject
 
@@ -20,8 +20,13 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic) int16_t type;
 @property (nonatomic) int32_t aid;
+@property (nonatomic, retain) NSString * topic;
+@property (nonatomic) int32_t nfigures;
+@property (nonatomic, retain) NSString * frontsubid;
+@property (nonatomic, retain) NSString * frontid;
 @property (nonatomic, retain) NSOrderedSet *affiliations;
 @property (nonatomic, retain) NSOrderedSet *authors;
+@property (nonatomic, retain) NSSet *correspondenceAt;
 @end
 
 @interface Abstract (CoreDataGeneratedAccessors)
@@ -46,4 +51,9 @@
 - (void)removeAuthorsObject:(Author *)value;
 - (void)addAuthors:(NSOrderedSet *)values;
 - (void)removeAuthors:(NSOrderedSet *)values;
+- (void)addCorrespondenceAtObject:(Correspondence *)value;
+- (void)removeCorrespondenceAtObject:(Correspondence *)value;
+- (void)addCorrespondenceAt:(NSSet *)values;
+- (void)removeCorrespondenceAt:(NSSet *)values;
+
 @end
