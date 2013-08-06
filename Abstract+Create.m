@@ -12,6 +12,21 @@
 #import "Affiliation.h"
 #import "Correspondence.h"
 
+
+@interface NSString (Trimming)
+- (NSString *) stringCleanForCD;
+@end
+
+@implementation NSString (Trimming)
+- (NSString *) stringCleanForCD
+{
+    NSString *trimmedString = [self stringByTrimmingCharactersInSet:
+                               [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    return trimmedString;
+}
+
+@end
+
 @implementation Abstract (Create)
 
 + (Abstract *) abstractForJSON:(NSDictionary *)json
@@ -29,14 +44,20 @@
                                                                     inManagedObjectContext:context];
     
     abstract.aid = abstractID;
-    abstract.title = [json objectForKey:@"title"];
-    abstract.text = [json objectForKey:@"abstract"];
-    abstract.acknoledgements = [json objectForKey:@"acknowledgements"];
-    abstract.references = [json objectForKey:@"refs"];
-    abstract.conflictOfInterests = [json objectForKey:@"coi"];
-    abstract.topic = [json objectForKey:@"topic"];
+    abstract.title = [[json objectForKey:@"title"] stringCleanForCD];
+    abstract.text = [[json objectForKey:@"abstract"] stringCleanForCD];
+    abstract.acknoledgements = [[json objectForKey:@"acknowledgements"] stringCleanForCD];
+    abstract.references = [[json objectForKey:@"refs"] stringCleanForCD];
+    abstract.conflictOfInterests = [[json objectForKey:@"coi"] stringCleanForCD];
     abstract.frontid = [json objectForKey:@"frontid"];
     abstract.frontsubid = [json objectForKey:@"frontsubid"];
+    
+    NSString *session = [json objectForKey:@"session"];
+    if (session) {
+        abstract.topic = session;
+    } else {
+        abstract.topic = [json objectForKey:@"topic"];
+    }
     
     NSNumber *nfigures = [json objectForKey:@"nfigures"];
     abstract.nfigures = [nfigures intValue];

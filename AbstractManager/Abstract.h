@@ -2,7 +2,7 @@
 //  Abstract.h
 //  AbstractManager
 //
-//  Created by Christian Kellner on 8/9/12.
+//  Created by Christian Kellner on 8/30/12.
 //  Copyright (c) 2012 G-Node. All rights reserved.
 //
 
@@ -14,16 +14,18 @@
 @interface Abstract : NSManagedObject
 
 @property (nonatomic, retain) NSString * acknoledgements;
+@property (nonatomic) int32_t aid;
 @property (nonatomic, retain) NSString * conflictOfInterests;
+@property (nonatomic, retain) NSString * frontid;
+@property (nonatomic, retain) NSString * frontsubid;
+@property (nonatomic) int32_t nfigures;
 @property (nonatomic, retain) NSString * references;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic) int16_t type;
-@property (nonatomic) int32_t aid;
 @property (nonatomic, retain) NSString * topic;
-@property (nonatomic) int32_t nfigures;
-@property (nonatomic, retain) NSString * frontsubid;
-@property (nonatomic, retain) NSString * frontid;
+@property (nonatomic) int16_t type;
+@property (nonatomic) BOOL isFavorite;
+@property (nonatomic, retain) NSString * notes;
 @property (nonatomic, retain) NSOrderedSet *affiliations;
 @property (nonatomic, retain) NSOrderedSet *authors;
 @property (nonatomic, retain) NSSet *correspondenceAt;

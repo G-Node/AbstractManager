@@ -57,8 +57,13 @@
         Affiliation *affiliation = [self.affiliations objectAtIndex:i];
         Organization *org = affiliation.toOrganization;
         
-        if (org.department)
-            [html appendFormat:@"<sup>%ld</sup> %@, %@, %@<br/>", i+1, org.department, org.name, org.country];
+        if (org.department) {
+            if (org.section) {
+                [html appendFormat:@"<sup>%ld</sup> %@, %@, %@, %@<br/>", i+1, org.section, org.department, org.name, org.country];
+            } else {
+                [html appendFormat:@"<sup>%ld</sup> %@, %@, %@<br/>", i+1, org.department, org.name, org.country];
+            }
+        }
         else {
             [html appendFormat:@"<sup>%ld</sup> %@, %@<br/>", i+1, org.name, org.country];
         }
@@ -77,6 +82,7 @@
     if (self.references)
         [html appendFormat:@"<p><h4>References</h4>%@</p>", [self.references formatHTML]];
     
+    [html appendFormat:@"<div><small>%@</small></div>", self.frontid];
     [html appendString:@"</body></html>"];
     
     return html;

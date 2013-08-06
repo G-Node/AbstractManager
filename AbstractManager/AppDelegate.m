@@ -36,63 +36,11 @@
 #import "Organization+Create.h"
 #import "Correspondence+Create.h"
 #import "Abstract+JSON.h"
+#import "AbstractGroup.h"
+#import "JSONImporer.h"
 
 #import <WebKit/WebKit.h>
 
-typedef enum _GroupType {
-    GT_UNSORTED = 0,
-    GT_I = 1,
-    GT_W = 2,
-    GT_T = 3,
-    GT_F = 4
-} GroupType;
-
-@interface AbstractGroup : NSObject
-@property (strong, nonatomic) NSMutableOrderedSet  *abstracts;
-@property (readonly, nonatomic) NSString *name;
-@property (nonatomic) GroupType type;
-+ (AbstractGroup *) groupWithType:(GroupType) groupType;
-
-@end
-
-@implementation AbstractGroup
-@synthesize abstracts = _abstracts;
-
-+ (AbstractGroup *) groupWithType:(GroupType)groupType
-{
-    AbstractGroup *group = [[AbstractGroup alloc] init];
-    group.type = groupType;
-    return group;
-}
-
-- (NSString *)name {
-    switch (self.type) {
-        case GT_UNSORTED:
-            return @"Unsorted";
-            break;
-        case GT_I:
-            return @"Invited Talk";
-            break;
-        case GT_W:
-            return @"Wednesday";
-            break;
-        case GT_T:
-            return @"Thursday";
-            break;
-        case GT_F:
-            return @"Friday";
-            break;
-    }
-}
-- (NSMutableOrderedSet *)abstracts
-{
-    if (_abstracts == nil) {
-        _abstracts = [[NSMutableOrderedSet alloc] init];
-    }
-    return _abstracts;
-}
-
-@end
 
 #define PT_REORDER @"PasteBoardTypeReorder"
 
@@ -103,10 +51,8 @@ typedef enum _GroupType {
 
 @property (weak) IBOutlet NSOutlineView *abstractOutline;
 
-@property (weak) IBOutlet NSTableView *abstractList;
 @property (weak) IBOutlet WebView *abstractView;
 @property (strong, nonatomic) NSArray *groups;
-@property (strong, nonatomic) NSOrderedSet *abstractGroups;
 @property (strong, nonatomic) NSString *latexStylesheet;
 @property (strong, nonatomic) NSString *htmlStylesheet;
 @end
@@ -116,7 +62,6 @@ typedef enum _GroupType {
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize abstractOutline = _abstractOutline;
-@synthesize abstractGroups = _abstractGroups;
 @synthesize latexStylesheet = _latexStylesheet;
 @synthesize htmlStylesheet = _htmlStylesheet;
 
@@ -285,8 +230,6 @@ typedef enum _GroupType {
     
     self.abstractOutline.dataSource = self;
     self.abstractOutline.delegate = self;
-    self.abstractList.dataSource = self;
-    self.abstractList.delegate = self;
     
     [self.abstractOutline registerForDraggedTypes:[NSArray arrayWithObject:PT_REORDER]];
     [self.abstractOutline setDraggingSourceOperationMask:NSDragOperationEvery forLocal:YES];
@@ -379,7 +322,8 @@ typedef enum _GroupType {
     }
 
     Abstract *abstract = item;
-    
+    [self removeAbstract:abstract.aid];
+    [self.managedObjectContext deleteObject:abstract];
 }
 
 // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
@@ -397,97 +341,6 @@ typedef enum _GroupType {
 }
 
 
-- (void) importAbstracts:(NSArray *)abstracts
-{
-    NSManagedObjectContext *context = self.managedObjectContext;
-    
-    int32_t articelCount = 1;
-    int32_t talkCount = 1;
-    for (NSDictionary *absDict in abstracts) {
-        int32_t aid;
-        
-        NSString *type = [absDict objectForKey:@"type"];
-        if ([type isEqualToString:@"Poster"]) {
-            aid = articelCount;
-            articelCount++;
-        } else {
-            aid = talkCount | (GT_I << 16);
-            talkCount++;
-        }
-        
-        NSLog(@"%@\n", [absDict objectForKey:@"title"]);
-        Abstract *abstract = [Abstract abstractForJSON:absDict withId:aid inManagedObjectContext:context];
-        
-        // Author
-        NSArray *authors = [absDict objectForKey:@"authors"];
-        
-        NSMutableOrderedSet *authorSet = [[NSMutableOrderedSet alloc] init];
-        for (NSDictionary *authorDict in authors) {
-            NSString *name = [authorDict objectForKey:@"name"];
-            Author *author = [Author findOrCreateforName:name inManagedContext:context];
-            [authorSet addObject:author];
-        }
-        
-        if (authorSet.count > 0)
-            abstract.authors = authorSet;
-        
-        //Correspondences
-        NSArray *corr = [Correspondence parseText:[absDict objectForKey:@"correspondence"]];
-        NSMutableSet *corrSet = [[NSMutableSet alloc] init];
-        NSUInteger corIdx = 0;
-        for (NSString *email in corr) {
-            
-            for (NSUInteger i = corIdx; i < authors.count; i++) {
-                id isCorresponding = [[authors objectAtIndex:i] objectForKey:@"corresponding"];
-                if (isCorresponding) {
-                    Author *author = [abstract.authors objectAtIndex:i];
-                    Correspondence *cor = [Correspondence correspondenceAt:email
-                                                                 forAuthor:author
-                                                    inManagedObjectContext:context];
-                    [corrSet addObject:cor];
-                    corIdx = i + 1;
-                    break;
-                }
-            }
-        }
-        
-        if (corrSet)
-            abstract.correspondenceAt = corrSet;
-        
-        // Affiliations
-        NSMutableOrderedSet *affiliations = [[NSMutableOrderedSet alloc] init];
-        NSDictionary *afDict = [absDict objectForKey:@"affiliations"];
-        NSUInteger index = 1;
-        for (NSString *key in afDict) {
-            NSString *value = [afDict objectForKey:key];
-            Organization *orga = [Organization findOrCreateForString:value inManagedContext:context];
-            
-            Affiliation *affiliation = [NSEntityDescription insertNewObjectForEntityForName:@"Affiliation" inManagedObjectContext:context];
-            
-            affiliation.toOrganization = orga;
-            
-            NSMutableSet *afAuthors = [[NSMutableSet alloc] init];
-            for (NSUInteger idxAuthor = 0; idxAuthor < authors.count; idxAuthor++) {
-                NSDictionary *authorDict = [authors objectAtIndex:idxAuthor];
-                NSArray *afArray = [authorDict objectForKey:@"affiliations"];
-                
-                for (NSNumber *afNum in afArray) {
-                    if ([afNum unsignedIntegerValue] == index) {
-                        [afAuthors addObject:[authorSet objectAtIndex:idxAuthor]];
-                        break;
-                    }
-                }
-            }
-            
-            affiliation.ofAuthors = afAuthors;
-            
-            [affiliations addObject:affiliation];
-            index++;
-        }
-        
-        abstract.affiliations = affiliations;
-    }
-}
 
 - (IBAction)importData:(id)sender
 {
@@ -499,15 +352,10 @@ typedef enum _GroupType {
     [importDialog beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
         if (result == NSFileHandlingPanelOKButton) {
             NSData *data = [[NSData alloc] initWithContentsOfURL:importDialog.URL];
-            id list = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-            if (![list isKindOfClass:[NSArray class]]) {
-                NSLog(@"NOT A ARRAY!\n");
-                return;
-            }
             
-            NSArray *abstracts = (NSArray *) list;
+            JSONImporer *imporer = [[JSONImporer alloc] initWithContext:self.managedObjectContext];
+            [imporer importAbstracts:data intoGroups:self.groups];
             
-            [self importAbstracts:abstracts];
             [self loadDataFromStore];
             [self.abstractOutline reloadData];
         }
@@ -530,6 +378,10 @@ typedef enum _GroupType {
     
     NSLog(@"results.count: %lu\n", results.count);
     self.abstracts = results;
+    
+    for (AbstractGroup *group in self.groups) {
+        [group.abstracts removeAllObjects];
+    }
     
     for (Abstract *abstract in self.abstracts) {
         int32_t aid = abstract.aid;
@@ -784,18 +636,24 @@ typedef enum _GroupType {
     return result;
 }
 
+- (AbstractGroup *) groupForAbstractId:(int32_t) aid
+{
+    NSUInteger ngroups = self.groups.count;
+    NSUInteger groupIndex = ((aid & (0xFFFF << 16)) + ngroups-1) % ngroups;
+    AbstractGroup *sourceGroup = [self.groups objectAtIndex:groupIndex];
+    NSLog(@"aid: %d [%lu]\n", aid, groupIndex);
+    NSLog(@"sourceGroupIdx: %lu, %@\n", groupIndex, sourceGroup.name);
+
+    return  sourceGroup;
+}
+
 - (Abstract *) removeAbstract:(int32_t) aid
 {
     NSOutlineView *outlineView = self.abstractOutline;
-    
-    NSUInteger ngroups = self.groups.count;
-    NSUInteger groupIndex = ((aid & (0xFFFF << 16)) + ngroups-1) % ngroups;
     NSUInteger abstractIndex = (aid & 0xFFFF) - 1; // abstract ids start at 1
-    NSLog(@"aid: %d [%lu %lu]\n", aid, groupIndex, abstractIndex);
-    
-    AbstractGroup *sourceGroup = [self.groups objectAtIndex:groupIndex];
+    AbstractGroup *sourceGroup = [self groupForAbstractId:aid];
     Abstract *abstract = [sourceGroup.abstracts objectAtIndex:abstractIndex];
-    NSLog(@"sourceGroupIdx: %lu, %@\n", groupIndex, sourceGroup.name);
+  
     [outlineView beginUpdates];
     
     [sourceGroup.abstracts removeObjectAtIndex:abstractIndex];

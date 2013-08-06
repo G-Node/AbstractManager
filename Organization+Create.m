@@ -66,6 +66,15 @@
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     NSUInteger idx = 0;
     
+    if (parts.count > 3) {
+        NSUInteger nelm = parts.count - 3;
+        NSRange range  = NSMakeRange(0, nelm+1);
+        NSArray *left = [parts subarrayWithRange:range];
+        NSString *section = [left componentsJoinedByString:@", "];
+        [dict setObject:section forKey:@"section"];
+        idx += nelm;
+    }
+    
     if (parts.count > 2) {
         [dict setObject:[parts trimedStringAtIndex:idx++] forKey:@"department"];
     }
