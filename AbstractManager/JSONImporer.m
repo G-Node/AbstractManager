@@ -67,7 +67,7 @@
             } else {
                 group = [groups objectAtIndex:0];
                 abstractIndex = (int32_t) group.abstracts.count;
-                aid = (abstractIndex + 1)| (GT_I << 16);
+                aid = (abstractIndex + 1)| (1 << 16); // was GT_I FIXME
             }
         }
         

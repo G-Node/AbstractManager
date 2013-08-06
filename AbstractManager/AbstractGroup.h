@@ -8,18 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum _GroupType {
-    GT_UNSORTED = 0,
-    GT_I = 1,
-    GT_W = 2,
-    GT_T = 3,
-    GT_F = 4
-} GroupType;
+typedef uint8 GroupType;
 
 @interface AbstractGroup : NSObject
 @property (strong, nonatomic) NSMutableOrderedSet  *abstracts;
-@property (readonly, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *name;
 @property (nonatomic) GroupType type;
+
 + (AbstractGroup *) groupWithType:(GroupType) groupType;
++ (AbstractGroup *) groupWithUID:(uint8)uid andName:(NSString *)name;
 
 @end

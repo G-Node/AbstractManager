@@ -55,6 +55,7 @@
 @property (strong, nonatomic) NSArray *groups;
 @property (strong, nonatomic) NSString *latexStylesheet;
 @property (strong, nonatomic) NSString *htmlStylesheet;
+@property (strong, nonatomic) NSString *groupsFile;
 @end
 
 @implementation AppDelegate
@@ -64,6 +65,7 @@
 @synthesize abstractOutline = _abstractOutline;
 @synthesize latexStylesheet = _latexStylesheet;
 @synthesize htmlStylesheet = _htmlStylesheet;
+@synthesize groupsFile = _groupsFile;
 
 - (NSURL *)applicationFilesDirectory
 {
@@ -215,21 +217,50 @@
     return YES;
 }
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+
+- (NSArray *) loadGroups
 {
-    NSMutableArray *roots = [NSMutableArray arrayWithCapacity:4];
-    [roots addObject:[AbstractGroup groupWithType:GT_I]];
-    [roots addObject:[AbstractGroup groupWithType:GT_W]];
-    [roots addObject:[AbstractGroup groupWithType:GT_T]];
-    [roots addObject:[AbstractGroup groupWithType:GT_F]];
-    [roots addObject:[AbstractGroup groupWithType:GT_UNSORTED]];
+    NSData *data = [NSData dataWithContentsOfFile:self.groupsFile];
+    
+    if (!data) {
+        return nil;
+    }
+    
+    id list = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    if (![list isKindOfClass:[NSArray class]]) {
+        NSLog(@"NOT A ARRAY!\n");
+        return nil;
+    }
+    
+    return (NSArray *) list;
+}
+
+- (BOOL) loadGroupsAndData
+{
+    NSArray *g = (NSArray *) [self loadGroups];
+    NSUInteger count = g.count + 1;
+    NSMutableArray *roots = [NSMutableArray arrayWithCapacity:count];
+    
+    for (int i = 0; i < g.count; i++) {
+        uint8 uid = (uint8) i + 1;
+        NSString *name = [g objectAtIndex:i];
+        [roots addObject:[AbstractGroup groupWithUID:uid andName:name]];
+    }
+    
+    [roots addObject:[AbstractGroup groupWithUID:0 andName:@"Unsorted"]];
     
     self.groups = roots;
-    
     [self loadDataFromStore];
     
-    self.abstractOutline.dataSource = self;
+    return YES;
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+    [self loadGroupsAndData];
+   
     self.abstractOutline.delegate = self;
+    self.abstractOutline.dataSource = self;
     
     [self.abstractOutline registerForDraggedTypes:[NSArray arrayWithObject:PT_REORDER]];
     [self.abstractOutline setDraggingSourceOperationMask:NSDragOperationEvery forLocal:YES];
@@ -292,6 +323,31 @@
     _htmlStylesheet = htmlStylesheet;
 }
 
+- (NSString *) groupsFile
+{
+    if (_groupsFile == nil) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        _groupsFile = [defaults stringForKey:@"groups_file"];
+    }
+    
+    return _groupsFile;
+}
+
+- (void) setGroupsFile:(NSString *)groupsFile
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:groupsFile forKey:@"groups_file"];
+    NSLog(@"Setting groups_file\n");
+    _groupsFile = groupsFile;
+    
+    if (groupsFile) {
+        [self loadDataFromStore];
+        [self.abstractOutline reloadData];
+    }
+    
+}
+
+
 #pragma mark - menu
 - (IBAction)menuSetStylesheet:(id)sender
 {
@@ -312,6 +368,25 @@
         }
     }];
 }
+
+- (IBAction)menuSetGroupsJSON:(id)sender {
+    NSOpenPanel *chooser = [NSOpenPanel openPanel];
+    chooser.title = @"Please select stylesheet";
+    
+    NSArray *filetypes = [NSArray arrayWithObjects:@"json", nil];
+    chooser.allowedFileTypes = filetypes;
+    
+    chooser.canChooseFiles = YES;
+    chooser.canChooseDirectories = NO;
+    chooser.allowsMultipleSelection = NO;
+    
+    [chooser beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        if (result == NSFileHandlingPanelOKButton) {
+            self.groupsFile = chooser.URL.path;
+        }
+    }];
+}
+
 - (IBAction)deleteAbstract:(id)sender
 {
     NSInteger row = [self.abstractOutline selectedRow];
@@ -388,7 +463,7 @@
         NSUInteger ngroups = self.groups.count;
         NSUInteger groupIndex = ((aid & (0xFFFF << 16)) + ngroups-1) % ngroups;
         NSUInteger abstractIndex = (aid & 0xFFFF) - 1;
-        
+        NSLog(@"\t%ld", groupIndex);
         AbstractGroup *group = [self.groups objectAtIndex:groupIndex];
         [group.abstracts insertObject:abstract atIndex:abstractIndex];
     }

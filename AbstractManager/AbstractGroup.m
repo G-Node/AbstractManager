@@ -11,6 +11,7 @@
 @implementation AbstractGroup
 @synthesize abstracts = _abstracts;
 @synthesize type = _type;
+@synthesize name = _name;
 
 + (AbstractGroup *) groupWithType:(GroupType)groupType
 {
@@ -19,31 +20,22 @@
     return group;
 }
 
-- (NSString *)name {
-    switch (self.type) {
-        case GT_UNSORTED:
-            return @"Unsorted";
-            break;
-        case GT_I:
-            return @"Invited Talk";
-            break;
-        case GT_W:
-            return @"Wednesday";
-            break;
-        case GT_T:
-            return @"Thursday";
-            break;
-        case GT_F:
-            return @"Friday";
-            break;
-    }
-}
 - (NSMutableOrderedSet *)abstracts
 {
     if (_abstracts == nil) {
         _abstracts = [[NSMutableOrderedSet alloc] init];
     }
     return _abstracts;
+}
+
++ (AbstractGroup *) groupWithUID:(uint8)uid andName:(NSString *)name
+{
+    AbstractGroup *group = [[AbstractGroup alloc] init];
+    
+    group.type = uid;
+    group.name = name;
+    
+    return group;
 }
 
 @end
