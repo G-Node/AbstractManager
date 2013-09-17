@@ -2,8 +2,8 @@
 //  Abstract.m
 //  AbstractManager
 //
-//  Created by Christian Kellner on 8/30/12.
-//  Copyright (c) 2012 G-Node. All rights reserved.
+//  Created by Christian Kellner on 17/09/2013.
+//  Copyright (c) 2013 G-Node. All rights reserved.
 //
 
 #import "Abstract.h"
@@ -17,16 +17,18 @@
 @dynamic acknoledgements;
 @dynamic aid;
 @dynamic conflictOfInterests;
-@dynamic frontid;
-@dynamic frontsubid;
+@dynamic doi;
+@dynamic figid;
+@dynamic isFavorite;
 @dynamic nfigures;
+@dynamic notes;
 @dynamic references;
+@dynamic session;
 @dynamic text;
 @dynamic title;
 @dynamic topic;
 @dynamic type;
-@dynamic isFavorite;
-@dynamic notes;
+@dynamic altid;
 @dynamic affiliations;
 @dynamic authors;
 @dynamic correspondenceAt;

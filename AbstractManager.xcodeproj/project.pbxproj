@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E9095781173AA6C700A1B6E0 /* Abstracts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E909577F173AA6C700A1B6E0 /* Abstracts.xcdatamodeld */; };
-		E9D1ABF915EF79D7003F8A00 /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E9D1ABF815EF79D7003F8A00 /* Abstract.m */; };
+		E9216DE317E8700F0013973B /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E9216DE217E8700F0013973B /* Abstract.m */; };
 		E9DD689415D2625E00063DBF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD689315D2625E00063DBF /* Cocoa.framework */; };
 		E9DD689E15D2625E00063DBF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DD689C15D2625E00063DBF /* InfoPlist.strings */; };
 		E9DD68A015D2625E00063DBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD689F15D2625E00063DBF /* main.m */; };
@@ -34,8 +34,8 @@
 
 /* Begin PBXFileReference section */
 		E9095780173AA6C700A1B6E0 /* Abstracts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Abstracts.xcdatamodel; sourceTree = "<group>"; };
-		E9D1ABF715EF79D7003F8A00 /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
-		E9D1ABF815EF79D7003F8A00 /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
+		E9216DE117E8700F0013973B /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
+		E9216DE217E8700F0013973B /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
 		E9DD688F15D2625E00063DBF /* AbstractManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbstractManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DD689315D2625E00063DBF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E9DD689615D2625E00063DBF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -162,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				E909577F173AA6C700A1B6E0 /* Abstracts.xcdatamodeld */,
+				E9216DE117E8700F0013973B /* Abstract.h */,
+				E9216DE217E8700F0013973B /* Abstract.m */,
 				E9DD68E115D265DC00063DBF /* Abstract+HTML.h */,
 				E9DD68E215D265DC00063DBF /* Abstract+HTML.m */,
 				E9DD692515D3CD7600063DBF /* Abstract+XML.h */,
@@ -174,8 +176,6 @@
 				E9DD68DB15D262F700063DBF /* Author+Create.m */,
 				E9DD68DC15D262F700063DBF /* Organization+Create.h */,
 				E9DD68DD15D262F700063DBF /* Organization+Create.m */,
-				E9D1ABF715EF79D7003F8A00 /* Abstract.h */,
-				E9D1ABF815EF79D7003F8A00 /* Abstract.m */,
 				E9DD699C15D4449300063DBF /* Organization.h */,
 				E9DD699D15D4449300063DBF /* Organization.m */,
 				E9DD699915D4449300063DBF /* Affiliation.h */,
@@ -258,6 +258,7 @@
 				E9DD68A015D2625E00063DBF /* main.m in Sources */,
 				E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */,
 				E9DD68DE15D262F700063DBF /* Abstract+Create.m in Sources */,
+				E9216DE317E8700F0013973B /* Abstract.m in Sources */,
 				E9DD68DF15D262F700063DBF /* Author+Create.m in Sources */,
 				E9DD68E015D262F700063DBF /* Organization+Create.m in Sources */,
 				E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */,
@@ -270,7 +271,6 @@
 				E9DD69A115D44CDB00063DBF /* Abstract+JSON.m in Sources */,
 				E9EFC5B015ECE2AB00E3BA53 /* JSONImporer.m in Sources */,
 				E9EFC5B415ECE47C00E3BA53 /* AbstractGroup.m in Sources */,
-				E9D1ABF915EF79D7003F8A00 /* Abstract.m in Sources */,
 				E9095781173AA6C700A1B6E0 /* Abstracts.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

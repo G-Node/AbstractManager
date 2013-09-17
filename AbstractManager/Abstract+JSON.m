@@ -21,8 +21,9 @@
     [json setObject:self.title forKey:@"title"];
     [json setObject:self.text forKey:@"abstract"];
     [json setObject:self.topic forKey:@"topic"];
-    [json setObject:self.frontid forKey:@"frontid"];
-    [json setObject:self.frontsubid forKey:@"frontsubid"];
+    [json setObject:self.doi forKey:@"doi"];
+    [json setObject:[NSNumber numberWithInt:self.figid] forKey:@"figid"];
+    [json setObject:[NSNumber numberWithInt:self.altid] forKey:@"altid"];
     [json setObject:[NSNumber numberWithInt:self.nfigures] forKey:@"nfigures"];
     
     if (self.acknoledgements)

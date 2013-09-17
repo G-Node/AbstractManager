@@ -49,8 +49,9 @@
     abstract.acknoledgements = [[json objectForKey:@"acknowledgements"] stringCleanForCD];
     abstract.references = [[json objectForKey:@"refs"] stringCleanForCD];
     abstract.conflictOfInterests = [[json objectForKey:@"coi"] stringCleanForCD];
-    abstract.frontid = [json objectForKey:@"frontid"];
-    abstract.frontsubid = [json objectForKey:@"frontsubid"];
+    abstract.doi = [json objectForKey:@"doi"];
+    abstract.figid = [json objectForKey:@"figid"];
+    abstract.altid = [json objectForKey:@"altid"];
     
     NSString *session = [json objectForKey:@"session"];
     if (session) {

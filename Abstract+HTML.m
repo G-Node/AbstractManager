@@ -82,7 +82,7 @@
     if (self.references)
         [html appendFormat:@"<p><h4>References</h4>%@</p>", [self.references formatHTML]];
     
-    [html appendFormat:@"<div><small>%@</small></div>", self.frontid];
+    [html appendFormat:@"<div><small>DOI: %@</small></div>", self.doi];
     [html appendString:@"</body></html>"];
     
     return html;

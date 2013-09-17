@@ -71,7 +71,7 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-    return [appSupportURL URLByAppendingPathComponent:@"org.g-node.AbstractManager"];
+    return [appSupportURL URLByAppendingPathComponent:@"org.g-node.BC13"];
 }
 
 - (NSManagedObjectModel *)managedObjectModel
@@ -460,12 +460,10 @@
     
     for (Abstract *abstract in self.abstracts) {
         int32_t aid = abstract.aid;
-        NSUInteger ngroups = self.groups.count;
-        NSUInteger groupIndex = ((aid & (0xFFFF << 16)) + ngroups-1) % ngroups;
-        NSUInteger abstractIndex = (aid & 0xFFFF) - 1;
-        NSLog(@"\t%ld", groupIndex);
+        NSUInteger groupIndex = (aid & 0xFFFF0000) >> 16;
+        NSLog(@"\tgroup index: %ld <- %d", groupIndex, ((aid & 0xFFFF0000) >> 16));
         AbstractGroup *group = [self.groups objectAtIndex:groupIndex];
-        [group.abstracts insertObject:abstract atIndex:abstractIndex];
+        [group.abstracts addObject:abstract];//insertObject:abstract atIndex:abstractIndex];
     }
 }
 
@@ -714,7 +712,7 @@
 - (AbstractGroup *) groupForAbstractId:(int32_t) aid
 {
     NSUInteger ngroups = self.groups.count;
-    NSUInteger groupIndex = ((aid & (0xFFFF << 16)) + ngroups-1) % ngroups;
+    NSUInteger groupIndex = (aid & 0xFFFF0000) >> 16;
     AbstractGroup *sourceGroup = [self.groups objectAtIndex:groupIndex];
     NSLog(@"aid: %d [%lu]\n", aid, groupIndex);
     NSLog(@"sourceGroupIdx: %lu, %@\n", groupIndex, sourceGroup.name);

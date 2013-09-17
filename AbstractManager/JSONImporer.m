@@ -71,14 +71,14 @@
             }
         }
         
-        NSString *frontid = [absDict objectForKey:@"frontid"];
-        if ([frontid isEqualToString:@"none"]) {
-            frontid = nil;
+        NSString *doi = [absDict objectForKey:@"doi"];
+        if ([doi isEqualToString:@"none"]) {
+            doi = nil;
         }
         
-        if (frontid) {
+        if (doi) {
             NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Abstract"];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"frontid == %@", frontid];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"doi == %@", doi];
             request.predicate = predicate;
             NSArray *result = [context executeFetchRequest:request error:nil];
             
@@ -92,7 +92,8 @@
         NSLog(@"NEW: %@\n", [absDict objectForKey:@"title"]);
         if (abstractIndex > [group.abstracts count]) {
             NSLog(@"%d,%ld", aid, group.abstracts.count);
-            NSAssert(abstractIndex-1 == group.abstracts.count, @"Input out of order");
+            //FIXME assert bigger then?
+            //NSAssert(abstractIndex-1 == group.abstracts.count, @"Input out of order");
             [group.abstracts addObject:abstract];
         } else {
             [group.abstracts insertObject:abstract atIndex:abstractIndex];
