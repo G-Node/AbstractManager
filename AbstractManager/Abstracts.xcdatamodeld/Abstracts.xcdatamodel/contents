@@ -4,6 +4,7 @@
         <attribute name="acknoledgements" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="aid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="altid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="conflictOfInterests" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="doi" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="figid" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -46,10 +47,10 @@
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affiliation" inverseName="toOrganization" inverseEntity="Affiliation" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Abstract" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Affiliation" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Author" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Correspondence" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Organization" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Abstract" positionX="0" positionY="0" width="128" height="328"/>
+        <element name="Affiliation" positionX="250" positionY="-27" width="128" height="90"/>
+        <element name="Author" positionX="259" positionY="-378" width="128" height="120"/>
+        <element name="Correspondence" positionX="340" positionY="171" width="128" height="90"/>
+        <element name="Organization" positionX="475" positionY="0" width="128" height="135"/>
     </elements>
 </model>

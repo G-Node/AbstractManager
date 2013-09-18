@@ -16,6 +16,7 @@
 
 @dynamic acknoledgements;
 @dynamic aid;
+@dynamic altid;
 @dynamic conflictOfInterests;
 @dynamic doi;
 @dynamic figid;
@@ -28,7 +29,7 @@
 @dynamic title;
 @dynamic topic;
 @dynamic type;
-@dynamic altid;
+@dynamic caption;
 @dynamic affiliations;
 @dynamic authors;
 @dynamic correspondenceAt;
