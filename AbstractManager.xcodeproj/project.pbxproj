@@ -95,7 +95,6 @@
 		E9DD688415D2625E00063DBF = {
 			isa = PBXGroup;
 			children = (
-				E9DD68E615D266AA00063DBF /* WebKit.framework */,
 				E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */,
 				E9DD689915D2625E00063DBF /* AbstractManager */,
 				E9DD689215D2625E00063DBF /* Frameworks */,
@@ -114,6 +113,7 @@
 		E9DD689215D2625E00063DBF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E9DD68E615D266AA00063DBF /* WebKit.framework */,
 				E9DD689315D2625E00063DBF /* Cocoa.framework */,
 				E9DD689515D2625E00063DBF /* Other Frameworks */,
 			);
