@@ -71,7 +71,7 @@
 {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *appSupportURL = [[fileManager URLsForDirectory:NSApplicationSupportDirectory inDomains:NSUserDomainMask] lastObject];
-    return [appSupportURL URLByAppendingPathComponent:@"org.g-node.BC13"];
+    return [appSupportURL URLByAppendingPathComponent:@"org.g-node.AbstractManager"];
 }
 
 - (NSManagedObjectModel *)managedObjectModel
