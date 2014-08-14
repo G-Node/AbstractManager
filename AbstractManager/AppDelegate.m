@@ -126,9 +126,11 @@
         }
     }
     
+    NSDictionary *ps_opts = @{NSSQLitePragmasOption: @{@"journal_mode":@"DELETE"}};
+    
     NSURL *url = [applicationFilesDirectory URLByAppendingPathComponent:@"Abstracts.storedata"];
     NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:mom];
-    if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:nil error:&error]) {
+    if (![coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:url options:ps_opts error:&error]) {
         [[NSApplication sharedApplication] presentError:error];
         return nil;
     }
