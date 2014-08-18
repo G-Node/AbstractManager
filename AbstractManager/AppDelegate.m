@@ -29,7 +29,6 @@
 #import "Abstract.h"
 #import "Abstract+Create.h"
 #import "Abstract+HTML.h"
-#import "Abstract+XML.h"
 #import "Author.h"
 #import "Author+Create.h"
 #import "Affiliation.h"
@@ -269,61 +268,6 @@
     [self.abstractOutline setDraggingSourceOperationMask:NSDragOperationEvery forLocal:NO];
 }
 
-- (NSString *) askUserForStylesheetwithHandler:(void (^)(NSInteger result, NSURL *url))handler
-{
-    NSOpenPanel *chooser = [NSOpenPanel openPanel];
-    chooser.title = @"Please select stylesheet";
-
-    NSArray *filetypes = [NSArray arrayWithObjects:@"xsl", @"xslt", nil];
-    chooser.allowedFileTypes = filetypes;
-    
-    chooser.canChooseFiles = YES;
-    chooser.canChooseDirectories = NO;
-    chooser.allowsMultipleSelection = NO;
-    
-    __block NSInteger success = 0;
-    [chooser beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
-        handler (result, chooser.URL);
-    }];
-    
-    return success ? chooser.URL.path : nil;
-}
-
-- (NSString *) latexStylesheet
-{
-    if (_latexStylesheet == nil) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        _latexStylesheet = [defaults stringForKey:@"latex_stylesheet"];
-    }
-    
-    return _latexStylesheet;
-}
-
-- (void) setLatexStylesheet:(NSString *)stylesheet
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:stylesheet forKey:@"latex_stylesheet"];
-    _latexStylesheet = stylesheet;
-}
-
-
-- (NSString *) htmlStylesheet
-{
-    if (_htmlStylesheet == nil) {
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        _htmlStylesheet = [defaults stringForKey:@"html_stylesheet"];
-    }
-    
-    return _htmlStylesheet;
-}
-
-- (void) setHtmlStylesheet:(NSString *)htmlStylesheet
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:htmlStylesheet forKey:@"html_stylesheet"];
-    NSLog(@"Setting html stylehseet\n");
-    _htmlStylesheet = htmlStylesheet;
-}
 
 - (NSString *) groupsFile
 {
@@ -351,26 +295,6 @@
 
 
 #pragma mark - menu
-- (IBAction)menuSetStylesheet:(id)sender
-{
-    [self askUserForStylesheetwithHandler:^(NSInteger result, NSURL *url) {
-        if (result == NSFileHandlingPanelOKButton) {
-            NSLog(@"Setting Tex stylehseet %@\n", url.path);
-            self.latexStylesheet = url.path;
-        }
-    }];
-}
-
-- (IBAction)menuSetHTMLStylesheet:(id)sender
-{
-    [self askUserForStylesheetwithHandler:^(NSInteger result, NSURL *url) {
-        if (result == NSFileHandlingPanelOKButton) {
-            NSLog(@"Setting HTML stylehseet %@\n", url.path);
-            self.htmlStylesheet = url.path;
-        }
-    }];
-}
-
 - (IBAction)menuSetGroupsJSON:(id)sender {
     NSOpenPanel *chooser = [NSOpenPanel openPanel];
     chooser.title = @"Please select stylesheet";
@@ -486,41 +410,11 @@
     NSLog(@"Written data: %d\n", success);
 }
 
-
-- (NSXMLDocument *) exportToXML
-{
-    NSXMLElement *root =
-    (NSXMLElement *)[NSXMLNode elementWithName:@"abstracts"];
-    NSXMLDocument *doc = [[NSXMLDocument alloc] initWithRootElement:root];
-    [doc setVersion:@"1.0"];
-    [doc setCharacterEncoding:@"UTF-8"];
-    
-    for (Abstract *abstract in self.abstracts) {
-        NSXMLNode *node = [abstract xml];
-        [root addChild:node];
-    }
-    
-    return doc;
-}
-
-- (NSXMLDocument *) exportXMLtoFile:(NSString *)path
-{
-    NSXMLDocument *doc = [self exportToXML];
-    
-    NSData *xmlData = [doc XMLDataWithOptions:NSXMLNodePrettyPrint];
-    if (![xmlData writeToFile:path atomically:YES]) {
-        NSBeep();
-        NSLog(@"Could not write document out...");
-    }
-
-    return doc;
-}
-
 - (IBAction)exportAbstracts:(id)sender
 {
     NSSavePanel *chooser = [NSSavePanel savePanel];
     
-    NSArray *fileTypes = [NSArray arrayWithObjects:@"json", @"xml", @"tex", @"htm", @"html", nil];
+    NSArray *fileTypes = [NSArray arrayWithObjects:@"json", nil];
     chooser.allowedFileTypes = fileTypes;
     chooser.allowsOtherFileTypes = NO;
     [chooser beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
@@ -529,50 +423,6 @@
             NSString *ext = [chooser.URL.path pathExtension];
             if ([ext isEqualToString:@"json"]) {
                 [self saveAbstractsToLocation:chooser.URL.path];
-            } else if ([ext isEqualToString:@"xml"]) {
-                [self exportXMLtoFile:chooser.URL.path];
-            } else if ([ext isEqualToString:@"tex"]) {
-                NSXMLDocument *doc = [self exportToXML];
-                
-                NSString *stylesheet = self.latexStylesheet;
-                if (!stylesheet) {
-                    NSLog(@"No stylesheet given\n");
-                    return;
-                }
-                NSError *error = nil;
-                NSURL *url = [NSURL URLWithString:stylesheet];
-                NSData *data = [doc objectByApplyingXSLTAtURL:url arguments:nil error:&error];
-                
-                if (data == nil) {
-                    NSLog(@"Could not transform document!\n");
-                    NSBeep();
-                    return;
-                }
-                
-                if (![data writeToFile:chooser.URL.path atomically:YES]) {
-                    NSBeep();
-                    NSLog(@"Could not write document out...");
-                }
-            }  else if ([ext isEqualToString:@"html"] || [ext isEqualToString:@"htm"]) {
-                NSXMLDocument *doc = [self exportToXML];
-                NSString *stylesheet = self.htmlStylesheet;
-                if (!stylesheet) {
-                    NSLog(@"No stylesheet given\n");
-                    return;
-                }
-                
-                NSURL *url = [NSURL fileURLWithPath:stylesheet];
-                NSXMLDocument  *html = (NSXMLDocument *)[doc objectByApplyingXSLTAtURL:url arguments:nil error:nil];
-                
-                if (html == nil) {
-                    NSLog(@"Could not transform to HTML\n");
-                }
-                
-                NSData *data = [html XMLDataWithOptions:NSXMLNodePrettyPrint];
-                if (![data writeToFile:chooser.URL.path atomically:YES]) {
-                    NSBeep();
-                    NSLog(@"Could not write document out...");
-                }
             }
         }
     }];

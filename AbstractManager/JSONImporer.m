@@ -11,7 +11,6 @@
 #import "Abstract.h"
 #import "Abstract+Create.h"
 #import "Abstract+HTML.h"
-#import "Abstract+XML.h"
 #import "Author.h"
 #import "Author+Create.h"
 #import "Affiliation.h"
