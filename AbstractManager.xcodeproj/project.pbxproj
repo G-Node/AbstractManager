@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E9095781173AA6C700A1B6E0 /* Abstracts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E909577F173AA6C700A1B6E0 /* Abstracts.xcdatamodeld */; };
-		E9216DE317E8700F0013973B /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E9216DE217E8700F0013973B /* Abstract.m */; };
+		E932B56019A2529400CA16A6 /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B55F19A2529400CA16A6 /* Abstract.m */; };
 		E9DD689415D2625E00063DBF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD689315D2625E00063DBF /* Cocoa.framework */; };
 		E9DD689E15D2625E00063DBF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DD689C15D2625E00063DBF /* InfoPlist.strings */; };
 		E9DD68A015D2625E00063DBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD689F15D2625E00063DBF /* main.m */; };
@@ -21,7 +21,6 @@
 		E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68E215D265DC00063DBF /* Abstract+HTML.m */; };
 		E9DD68E515D2669E00063DBF /* BCCN_Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */; };
 		E9DD68E715D266AA00063DBF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD68E615D266AA00063DBF /* WebKit.framework */; };
-		E9DD692715D3CD7600063DBF /* Abstract+XML.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD692615D3CD7600063DBF /* Abstract+XML.m */; };
 		E9DD698F15D4290A00063DBF /* Correspondence+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD698E15D4290A00063DBF /* Correspondence+Create.m */; };
 		E9DD699515D4449200063DBF /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD699415D4449200063DBF /* Author.m */; };
 		E9DD699815D4449300063DBF /* Correspondence.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD699715D4449200063DBF /* Correspondence.m */; };
@@ -34,8 +33,8 @@
 
 /* Begin PBXFileReference section */
 		E9095780173AA6C700A1B6E0 /* Abstracts.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Abstracts.xcdatamodel; sourceTree = "<group>"; };
-		E9216DE117E8700F0013973B /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
-		E9216DE217E8700F0013973B /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
+		E932B55E19A2529400CA16A6 /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
+		E932B55F19A2529400CA16A6 /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
 		E9DD688F15D2625E00063DBF /* AbstractManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbstractManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DD689315D2625E00063DBF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E9DD689615D2625E00063DBF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -59,8 +58,6 @@
 		E9DD68E215D265DC00063DBF /* Abstract+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Abstract+HTML.m"; path = "../Abstract+HTML.m"; sourceTree = "<group>"; };
 		E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = BCCN_Logo.icns; sourceTree = "<group>"; };
 		E9DD68E615D266AA00063DBF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		E9DD692515D3CD7600063DBF /* Abstract+XML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Abstract+XML.h"; sourceTree = "<group>"; };
-		E9DD692615D3CD7600063DBF /* Abstract+XML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Abstract+XML.m"; sourceTree = "<group>"; };
 		E9DD698D15D4290A00063DBF /* Correspondence+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Correspondence+Create.h"; sourceTree = "<group>"; };
 		E9DD698E15D4290A00063DBF /* Correspondence+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Correspondence+Create.m"; sourceTree = "<group>"; };
 		E9DD699315D4449200063DBF /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
@@ -162,12 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				E909577F173AA6C700A1B6E0 /* Abstracts.xcdatamodeld */,
-				E9216DE117E8700F0013973B /* Abstract.h */,
-				E9216DE217E8700F0013973B /* Abstract.m */,
+				E932B55E19A2529400CA16A6 /* Abstract.h */,
+				E932B55F19A2529400CA16A6 /* Abstract.m */,
 				E9DD68E115D265DC00063DBF /* Abstract+HTML.h */,
 				E9DD68E215D265DC00063DBF /* Abstract+HTML.m */,
-				E9DD692515D3CD7600063DBF /* Abstract+XML.h */,
-				E9DD692615D3CD7600063DBF /* Abstract+XML.m */,
 				E9DD699F15D44CDB00063DBF /* Abstract+JSON.h */,
 				E9DD69A015D44CDB00063DBF /* Abstract+JSON.m */,
 				E9DD68D815D262F700063DBF /* Abstract+Create.h */,
@@ -258,11 +253,10 @@
 				E9DD68A015D2625E00063DBF /* main.m in Sources */,
 				E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */,
 				E9DD68DE15D262F700063DBF /* Abstract+Create.m in Sources */,
-				E9216DE317E8700F0013973B /* Abstract.m in Sources */,
+				E932B56019A2529400CA16A6 /* Abstract.m in Sources */,
 				E9DD68DF15D262F700063DBF /* Author+Create.m in Sources */,
 				E9DD68E015D262F700063DBF /* Organization+Create.m in Sources */,
 				E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */,
-				E9DD692715D3CD7600063DBF /* Abstract+XML.m in Sources */,
 				E9DD698F15D4290A00063DBF /* Correspondence+Create.m in Sources */,
 				E9DD699515D4449200063DBF /* Author.m in Sources */,
 				E9DD699815D4449300063DBF /* Correspondence.m in Sources */,
@@ -355,12 +349,15 @@
 		E9DD68AE15D2625E00063DBF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AbstractManager/AbstractManager-Prefix.pch";
 				INFOPLIST_FILE = "AbstractManager/AbstractManager-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -368,10 +365,12 @@
 		E9DD68AF15D2625E00063DBF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AbstractManager/AbstractManager-Prefix.pch";
 				INFOPLIST_FILE = "AbstractManager/AbstractManager-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
