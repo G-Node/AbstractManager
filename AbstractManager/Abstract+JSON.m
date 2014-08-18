@@ -25,6 +25,7 @@
     [json setObject:[NSNumber numberWithInt:self.figid] forKey:@"figid"];
     [json setObject:[NSNumber numberWithInt:self.altid] forKey:@"altid"];
     [json setObject:[NSNumber numberWithInt:self.nfigures] forKey:@"nfigures"];
+    json[@"uuid"] = self.uuid;
     
     if (self.acknoledgements)
         [json setObject:self.acknoledgements forKey:@"acknowledgements"];

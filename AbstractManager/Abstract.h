@@ -2,8 +2,8 @@
 //  Abstract.h
 //  AbstractManager
 //
-//  Created by Christian Kellner on 17/09/2013.
-//  Copyright (c) 2013 G-Node. All rights reserved.
+//  Created by Christian Kellner on 18/08/14.
+//  Copyright (c) 2014 G-Node. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * acknoledgements;
 @property (nonatomic) int32_t aid;
 @property (nonatomic) int32_t altid;
+@property (nonatomic, retain) NSString * caption;
 @property (nonatomic, retain) NSString * conflictOfInterests;
 @property (nonatomic, retain) NSString * doi;
 @property (nonatomic) int32_t figid;
@@ -28,7 +29,7 @@
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * topic;
 @property (nonatomic) int16_t type;
-@property (nonatomic, retain) NSString * caption;
+@property (nonatomic, retain) NSString * uuid;
 @property (nonatomic, retain) NSOrderedSet *affiliations;
 @property (nonatomic, retain) NSOrderedSet *authors;
 @property (nonatomic, retain) NSSet *correspondenceAt;

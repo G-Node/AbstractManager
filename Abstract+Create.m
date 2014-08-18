@@ -44,6 +44,7 @@
                                                                     inManagedObjectContext:context];
     
     abstract.aid = abstractID;
+    abstract.uuid = [json[@"uuid"] stringCleanForCD];
     abstract.title = [[json objectForKey:@"title"] stringCleanForCD];
     abstract.text = [[json objectForKey:@"abstract"] stringCleanForCD];
     abstract.acknoledgements = [[json objectForKey:@"acknowledgements"] stringCleanForCD];

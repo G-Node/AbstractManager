@@ -83,6 +83,7 @@
         [html appendFormat:@"<p><h4>References</h4>%@</p>", [self.references formatHTML]];
     
     [html appendFormat:@"<div><small>DOI: %@</small></div>", self.doi];
+    [html appendFormat:@"<div><small>uuid: %@</small></div>", self.uuid];
     [html appendString:@"</body></html>"];
     
     return html;
