@@ -56,18 +56,9 @@
             group = [groups objectAtIndex:groupIndex];
             abstractIndex = (aid & 0xFFFF) - 1;
         } else {
-
-            NSString *type = [absDict objectForKey:@"type"];
-            if ([type isEqualToString:@"Poster"]) {
-                group = [groups lastObject];
-                abstractIndex = (int32_t) group.abstracts.count;
-                aid = abstractIndex + 1;
-                
-            } else {
-                group = [groups objectAtIndex:0];
-                abstractIndex = (int32_t) group.abstracts.count;
-                aid = (abstractIndex + 1)| (1 << 16); // was GT_I FIXME
-            }
+            group = [groups lastObject];
+            abstractIndex = (int32_t) group.abstracts.count;
+            aid = abstractIndex + 1;
         }
         
         NSString *doi = [absDict objectForKey:@"doi"];
