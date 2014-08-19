@@ -62,24 +62,7 @@
             abstractIndex = (int32_t) group.abstracts.count;
             aid = abstractIndex + 1;
         }
-        
-        NSString *doi = [absDict objectForKey:@"doi"];
-        if ([doi isEqualToString:@"none"]) {
-            doi = nil;
-        }
-        
-        if (doi) {
-            NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Abstract"];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"doi == %@", doi];
-            request.predicate = predicate;
-            NSArray *result = [context executeFetchRequest:request error:nil];
-            
-            if (result.count > 0) {
-                //NSLog(@"FOUND: %@\n", [absDict objectForKey:@"title"]);
-                continue;
-            }
-        }
-        
+
         Abstract *abstract = [Abstract abstractForJSON:absDict withId:aid inManagedObjectContext:context];
         NSLog(@"NEW: %@\n", [absDict objectForKey:@"title"]);
         if (abstractIndex > [group.abstracts count]) {
