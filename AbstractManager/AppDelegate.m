@@ -461,7 +461,7 @@
         } else if ([tableColumn.identifier isEqualToString:@"topic"]) {
             text = abstract.topic;
         } else if ([tableColumn.identifier isEqualToString:@"nfigures"]) {
-            text = [NSString stringWithFormat:@"%d", abstract.nfigures];
+            text = [NSString stringWithFormat:@"%lu", (unsigned long)abstract.figures.count];
         }
     }
     return text;
