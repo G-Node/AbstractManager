@@ -14,6 +14,7 @@
 #import "Affiliation.h"
 #import "Correspondence.h"
 #import "Reference.h"
+#import "Figure.h"
 
 @implementation NSString(HTML)
 
@@ -102,25 +103,28 @@
         [html appendString:@"</ol></div>"];
     }
 
-    NSArray *legitFormats = @[ @"tiff", @"png", @"jpeg", @"pdf"];
-    if (self.nfigures) {
-        NSString *figID = [NSString stringWithFormat:@"%03d", self.figid];
-        NSLog(@"figure path: %@", figID);
+    NSArray *legitFormats = @[ @"tiff", @"png", @"jpeg", @"pdf", @"" ];
 
-        __block NSString *fullpath = @"";
+    for (short i = 0; i < self.figures.count; i++) {
+        Figure *figure = self.figures[i];
+
+        __block NSString *fullpath = nil;
+        __block BOOL have_thumbnail = false;
 
         [legitFormats enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            fullpath = [NSString stringWithFormat:@"%@.%@", figID, obj];
+            fullpath = [NSString stringWithFormat:@"%@.%@", figure.uuid, obj];
             NSString *testPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:fullpath];
-            *stop = [[NSFileManager defaultManager] fileExistsAtPath:testPath];
+            *stop = have_thumbnail = [[NSFileManager defaultManager] fileExistsAtPath:testPath];
         }];
 
-        NSString *caption = self.caption;
-        if ([caption hasPrefix:@"Figure 1"]) {
-            caption = [caption substringFromIndex:8];
+        if (!have_thumbnail) {
+            fullpath = figure.url;
         }
 
-        [html appendFormat:@"<div class=\"figure\"><img src=\"%@\" /><p>Figure 1:%@<p></div><br/>", fullpath, caption];
+        [html appendString:@"<div class=\"figure\">"];
+        [html appendFormat:@"<a href=\"%@\"><img src=\"%@\" /></a><p>Figure %d: %@<p>",
+         figure.url, fullpath, i+1, figure.caption];
+        [html appendFormat:@"</div><br/>"];
     }
 
     [html appendFormat:@"<div>doi: <a href=\"http://dx.doi.org/%@\">%@</a></div><br/>", self.doi, self.doi];

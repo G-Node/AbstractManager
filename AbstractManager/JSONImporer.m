@@ -19,6 +19,7 @@
 #import "AbstractGroup.h"
 #import "Reference.h"
 #import "NSString+Import.h"
+#import "Figure.h"
 
 @implementation JSONImporer
 @synthesize context = _context;
@@ -148,6 +149,19 @@
         }
 
         abstract.references = refs;
+
+        //figures
+        NSMutableOrderedSet *figures = [[NSMutableOrderedSet alloc] init];
+        for(NSDictionary *figDict in absDict[@"figures"]) {
+            Figure *figure = [NSEntityDescription insertNewObjectForEntityForName:@"Figure"
+                                                           inManagedObjectContext:context];
+            figure.uuid = figDict[@"uuid"];
+            figure.caption = [NSString mkStringForJS:figDict[@"caption"]];
+            figure.url = [NSString mkStringForJS:figDict[@"URL"]];
+            [figures addObject:figure];
+        }
+        
+        abstract.figures = figures;
     }
     
     return YES;

@@ -10,6 +10,7 @@
 #import "Affiliation.h"
 #import "Author.h"
 #import "Correspondence.h"
+#import "Figure.h"
 #import "Reference.h"
 
 
@@ -21,7 +22,6 @@
 @dynamic caption;
 @dynamic conflictOfInterests;
 @dynamic doi;
-@dynamic figid;
 @dynamic isFavorite;
 @dynamic nfigures;
 @dynamic notes;
@@ -35,5 +35,6 @@
 @dynamic authors;
 @dynamic correspondenceAt;
 @dynamic references;
+@dynamic figures;
 
 @end
