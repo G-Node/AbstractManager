@@ -31,10 +31,10 @@
 #import "Abstract+HTML.h"
 #import "Author.h"
 #import "Author+Create.h"
+#import "Author+Format.h"
 #import "Affiliation.h"
 #import "Organization+Create.h"
 #import "Correspondence+Create.h"
-#import "Abstract+JSON.h"
 #import "AbstractGroup.h"
 #import "JSONImporer.h"
 
@@ -393,41 +393,6 @@
     }
 }
 
-
-- (void) saveAbstractsToLocation:(NSString *)path
-{
-    NSMutableArray *all = [[NSMutableArray alloc] initWithCapacity:self.abstracts.count];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"aid" ascending:YES];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    NSArray *sortedAbstracts = [self.abstracts sortedArrayUsingDescriptors:sortDescriptors];
-    for (Abstract *abstract in sortedAbstracts) {
-        NSDictionary *dict = [abstract json];
-        [all addObject:dict];
-    }
-    
-    NSData *data = [NSJSONSerialization dataWithJSONObject:all options:NSJSONWritingPrettyPrinted error:nil];
-    BOOL success = [data writeToFile:path atomically:YES];
-    NSLog(@"Written data: %d\n", success);
-}
-
-- (IBAction)exportAbstracts:(id)sender
-{
-    NSSavePanel *chooser = [NSSavePanel savePanel];
-    
-    NSArray *fileTypes = [NSArray arrayWithObjects:@"json", nil];
-    chooser.allowedFileTypes = fileTypes;
-    chooser.allowsOtherFileTypes = NO;
-    [chooser beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
-        if (result == NSFileHandlingPanelOKButton) {
-            NSLog(@"%@", chooser.URL.path);
-            NSString *ext = [chooser.URL.path pathExtension];
-            if ([ext isEqualToString:@"json"]) {
-                [self saveAbstractsToLocation:chooser.URL.path];
-            }
-        }
-    }];
-}
-
 #pragma mark - TableViewDataSource
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView
 {
@@ -490,7 +455,7 @@
         Abstract *abstract = item;
         if ([tableColumn.identifier isEqualToString:@"author"]) {
             Author *author = [abstract.authors objectAtIndex:0];
-            text = author.name;
+            text = [author formatName];
         } else if ([tableColumn.identifier isEqualToString:@"title"]) {
             text = abstract.title;
         } else if ([tableColumn.identifier isEqualToString:@"topic"]) {

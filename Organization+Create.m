@@ -22,25 +22,12 @@
 
 + (Organization *) findOrCreateForDict:(NSDictionary *)dict inManagedContext:(NSManagedObjectContext *)context
 {
+    NSString *uuid = dict[@"uuid"];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Organization"];
-    
-    NSMutableString *predString = [[NSMutableString alloc] init];
-    
-    BOOL firstItem = YES;
-    for (NSString *key in dict) {
-        NSString *value = [dict objectForKey:key];
-        
-        if (!firstItem) {
-            [predString appendString:@" AND "];
-        }
-        [predString appendFormat:@"%@ == \"%@\"", key, value];
-        firstItem = NO;
-    }
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:predString];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@", uuid];
     request.predicate = predicate;
     NSArray *result = [context executeFetchRequest:request error:nil];
-    
+
     Organization *org;
     if (result.count > 0) {
         org  = [result objectAtIndex:0];
@@ -50,6 +37,11 @@
                                                inManagedObjectContext:context];
         for (NSString *key in dict) {
             NSString *value = [dict objectForKey:key];
+
+            if ([key isEqualToString:@"position"]) {
+                continue;
+            }
+
             [org setValue:value forKey:key];
         }
     }

@@ -9,5 +9,5 @@
 #import "Author.h"
 
 @interface Author (Create)
-+ (Author *) findOrCreateforName:(NSString *)name inManagedContext:(NSManagedObjectContext *)context;
++ (Author *) findOrCreateforDict:(NSDictionary *)dct inManagedContext:(NSManagedObjectContext *)context;
 @end

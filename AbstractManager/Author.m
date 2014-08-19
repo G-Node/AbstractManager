@@ -2,8 +2,8 @@
 //  Author.m
 //  AbstractManager
 //
-//  Created by Christian Kellner on 8/9/12.
-//  Copyright (c) 2012 G-Node. All rights reserved.
+//  Created by Christian Kellner on 18/08/14.
+//  Copyright (c) 2014 G-Node. All rights reserved.
 //
 
 #import "Author.h"
@@ -15,9 +15,12 @@
 @implementation Author
 
 @dynamic email;
-@dynamic name;
+@dynamic firstName;
+@dynamic lastName;
+@dynamic middleName;
+@dynamic uuid;
 @dynamic isAffiliatedTo;
-@dynamic wroteAbstract;
 @dynamic isCorresponding;
+@dynamic wroteAbstract;
 
 @end

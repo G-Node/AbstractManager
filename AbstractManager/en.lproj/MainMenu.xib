@@ -72,11 +72,6 @@
                                     <action selector="importData:" target="494" id="641"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Export" keyEquivalent="e" id="740">
-                                <connections>
-                                    <action selector="exportAbstracts:" target="494" id="741"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Open Recent" id="124">
                                 <menu key="submenu" title="Open Recent" systemMenu="recentDocuments" id="125">
                                     <items>

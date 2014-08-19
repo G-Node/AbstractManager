@@ -29,7 +29,10 @@
     </entity>
     <entity name="Author" representedClassName="Author" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="middleName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="isAffiliatedTo" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affiliation" inverseName="ofAuthors" inverseEntity="Affiliation" syncable="YES"/>
         <relationship name="isCorresponding" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Correspondence" inverseName="ofAuthor" inverseEntity="Correspondence" syncable="YES"/>
         <relationship name="wroteAbstract" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Abstract" inverseName="authors" inverseEntity="Abstract" syncable="YES"/>
@@ -45,13 +48,14 @@
         <attribute name="department" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="section" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affiliation" inverseName="toOrganization" inverseEntity="Affiliation" syncable="YES"/>
     </entity>
     <elements>
         <element name="Abstract" positionX="0" positionY="0" width="128" height="345"/>
         <element name="Affiliation" positionX="250" positionY="-27" width="128" height="90"/>
-        <element name="Author" positionX="259" positionY="-378" width="128" height="120"/>
+        <element name="Author" positionX="259" positionY="-378" width="128" height="163"/>
         <element name="Correspondence" positionX="340" positionY="171" width="128" height="90"/>
-        <element name="Organization" positionX="475" positionY="0" width="128" height="135"/>
+        <element name="Organization" positionX="475" positionY="0" width="128" height="150"/>
     </elements>
 </model>

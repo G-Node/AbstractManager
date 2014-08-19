@@ -8,6 +8,7 @@
 
 #import "Abstract+HTML.h"
 #import "Author.h"
+#import "Author+Format.h"
 #import "Organization.h"
 #import "Affiliation.h"
 #import "Correspondence.h"
@@ -33,7 +34,7 @@
     
     [html appendString:@"<div><h3>"];
     for (Author *author in self.authors) {
-        [html appendFormat:@"%@", author.name];
+        [html appendFormat:@"%@", [author formatName]];
         
         [html appendFormat:@"<sup>"];
         for (NSUInteger i = 0; i < self.affiliations.count; i++) {

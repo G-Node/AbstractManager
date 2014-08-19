@@ -16,7 +16,6 @@
 #import "Affiliation.h"
 #import "Organization+Create.h"
 #import "Correspondence+Create.h"
-#import "Abstract+JSON.h"
 #import "AbstractGroup.h"
 
 @implementation JSONImporer
@@ -89,129 +88,51 @@
             [group.abstracts insertObject:abstract atIndex:abstractIndex];
         }
         NSLog(@"N: %d %ld %@\n", abstractIndex, group.abstracts.count, group.name);
+
         
+        // Affiliations
+        id afEntity = [absDict objectForKey:@"affiliations"];
+
+        if(![afEntity isKindOfClass:[NSArray class]]) {
+            NSLog(@"Error in format: Affiliations is not an array");
+            continue;
+        }
+
+        NSMutableOrderedSet *affiliations = [[NSMutableOrderedSet alloc] init];
+        for (NSDictionary *afDict in afEntity) {
+            Organization *orga = [Organization findOrCreateForDict:afDict inManagedContext:context];
+            Affiliation *affiliation = [NSEntityDescription insertNewObjectForEntityForName:@"Affiliation"
+                                                                     inManagedObjectContext:context];
+            affiliation.toOrganization = orga;
+            [affiliations addObject:affiliation];
+        }
+
+        abstract.affiliations = affiliations;
+
         // Author
         NSArray *authors = [absDict objectForKey:@"authors"];
         
         NSMutableOrderedSet *authorSet = [[NSMutableOrderedSet alloc] init];
         for (NSDictionary *authorDict in authors) {
-            NSString *name = [authorDict objectForKey:@"name"];
-            Author *author = [Author findOrCreateforName:name inManagedContext:context];
+            Author *author = [Author findOrCreateforDict:authorDict
+                                        inManagedContext:context];
             [authorSet addObject:author];
+
+            NSMutableSet *afbuilder = [[NSMutableSet alloc] init];
+            NSArray *affiliated = authorDict[@"affiliations"];
+            for (NSNumber *affid in affiliated) {
+                NSUInteger idx = [affid unsignedIntegerValue];
+                Affiliation *affiliation = [affiliations objectAtIndex:idx];
+                [afbuilder addObject:affiliation];
+            }
+
+            author.isAffiliatedTo = [afbuilder copy];
         }
         
         if (authorSet.count > 0)
             abstract.authors = authorSet;
-        
-        //Correspondences
-        NSArray *corr;
-        id corEntity = [absDict objectForKey:@"correspondence"];
-        if ([corEntity isKindOfClass:[NSString class]]) {
-            corr = [Correspondence parseText:corEntity];
-        } else if ([corEntity isKindOfClass:[NSArray class]]) {
-            corr = corEntity;
-        }
-        
-        NSMutableSet *corrSet = [[NSMutableSet alloc] init];
-        NSUInteger corIdx = 0;
-        for (NSString *email in corr) {
-            
-            for (NSUInteger i = corIdx; i < authors.count; i++) {
-                NSDictionary *authorDict = [authors objectAtIndex:i];
-                BOOL isCorresponding;
-                NSString *epithet = [authorDict objectForKey:@"epithet"];
-                if (epithet) {
-                    isCorresponding = [epithet hasSuffix:@"*"];
-                } else {
-                    isCorresponding = [authorDict objectForKey:@"corresponding"] != nil;
-                }
-                
-                if (isCorresponding) {
-                    Author *author = [abstract.authors objectAtIndex:i];
-                    Correspondence *cor = [Correspondence correspondenceAt:email
-                                                                 forAuthor:author
-                                                    inManagedObjectContext:context];
-                    [corrSet addObject:cor];
-                    corIdx = i + 1;
-                    break;
-                }
-            }
-        }
-        
-        if (corrSet)
-            abstract.correspondenceAt = corrSet;
-        
-        // Affiliations
-        id afEntity = [absDict objectForKey:@"affiliations"];
-        NSDictionary *afDict;
-        
-        if ([afEntity isKindOfClass:[NSArray class]]) {
-            NSMutableDictionary *afDictBuilder = [[NSMutableDictionary alloc] initWithCapacity:[afEntity count]];
-            
-            [afEntity enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                NSString *address = [obj objectForKey:@"address"];
-                [afDictBuilder setObject:address forKey:[NSString stringWithFormat:@"%lu", idx+1]];
-            }];
-            afDict = afDictBuilder;
-        } else {
-            afDict = [absDict objectForKey:@"affiliations"];
-        }
-        
-        NSMutableOrderedSet *affiliations = [[NSMutableOrderedSet alloc] init];
-        NSUInteger index = 1;
-        for (NSUInteger afIdx = 1; afIdx <= afDict.count; afIdx++) {
-            NSString *value = [afDict objectForKey:[NSString stringWithFormat:@"%lu", afIdx]];
-            Organization *orga = [Organization findOrCreateForString:value inManagedContext:context];
-            
-            Affiliation *affiliation = [NSEntityDescription insertNewObjectForEntityForName:@"Affiliation" inManagedObjectContext:context];
-            
-            affiliation.toOrganization = orga;
-            
-            NSMutableSet *afAuthors = [[NSMutableSet alloc] init];
-            for (NSUInteger idxAuthor = 0; idxAuthor < authors.count; idxAuthor++) {
-                NSDictionary *authorDict = [authors objectAtIndex:idxAuthor];
-                
-                NSString *epithet = [authorDict objectForKey:@"epithet"];
-                NSArray *afArray;
 
-                if (epithet) {
-                    NSArray *compoments = [epithet componentsSeparatedByString:@","];
-                    NSMutableArray *compArray = [[NSMutableArray alloc] initWithCapacity:[compoments count]];
-                    
-                    [compoments enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                        NSString *c = (obj);
-                        if ([c hasSuffix:@"*"]) {
-                            c = [c substringToIndex:[c length] - 1];
-                        }
-                        
-                     NSNumber *num = [NSNumber numberWithInteger:[c integerValue]];
-                     if (num) {
-                         [compArray addObject:num];
-                     } else {
-                         NSLog(@"XXX Not a number!");
-                     }
-                    }];
-                    
-                    afArray = compArray;
-                } else {
-                    afArray = [authorDict objectForKey:@"affiliations"];
-                }
-                
-                for (NSNumber *afNum in afArray) {
-                    if ([afNum unsignedIntegerValue] == index) {
-                        [afAuthors addObject:[authorSet objectAtIndex:idxAuthor]];
-                        break;
-                    }
-                }
-            }
-            
-            affiliation.ofAuthors = afAuthors;
-            
-            [affiliations addObject:affiliation];
-            index++;
-        }
-        
-        abstract.affiliations = affiliations;
+
     }
     
     return YES;
