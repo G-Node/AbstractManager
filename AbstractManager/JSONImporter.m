@@ -13,9 +13,8 @@
 #import "Abstract+HTML.h"
 #import "Author.h"
 #import "Affiliation.h"
-#import "Organization+Create.h"
-#import "Correspondence+Create.h"
 #import "AbstractGroup.h"
+#import "Organization.h"
 #import "Reference.h"
 #import "NSString+Import.h"
 #import "Figure.h"
@@ -109,9 +108,20 @@
 
         NSMutableOrderedSet *affiliations = [[NSMutableOrderedSet alloc] init];
         for (NSDictionary *afDict in afEntity) {
-            Organization *orga = [Organization findOrCreateForDict:afDict inManagedContext:context];
+            Organization *orga = [self openObj:@"Organization" WithUUID:afDict[@"uuid"]];
             Affiliation *affiliation = [NSEntityDescription insertNewObjectForEntityForName:@"Affiliation"
                                                                      inManagedObjectContext:context];
+
+            for (NSString *key in afDict) {
+                NSString *value = afDict[key];
+
+                if ([key isEqualToString:@"position"]) {
+                    continue;
+                }
+
+                [orga setValue:[NSString mkStringForJS:value] forKey:key];
+            }
+
             affiliation.toOrganization = orga;
             [affiliations addObject:affiliation];
         }

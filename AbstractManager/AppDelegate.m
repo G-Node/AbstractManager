@@ -32,8 +32,6 @@
 #import "Author.h"
 #import "Author+Format.h"
 #import "Affiliation.h"
-#import "Organization+Create.h"
-#import "Correspondence+Create.h"
 #import "AbstractGroup.h"
 #import "JSONImporter.h"
 
