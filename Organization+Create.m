@@ -7,6 +7,7 @@
 //
 
 #import "Organization+Create.h"
+#import "NSString+Import.h"
 
 @implementation NSArray (Trimming)
 
@@ -42,7 +43,7 @@
                 continue;
             }
 
-            [org setValue:value forKey:key];
+            [org setValue:[NSString mkStringForJS:value] forKey:key];
         }
     }
     return org;
