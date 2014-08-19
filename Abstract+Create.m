@@ -11,7 +11,7 @@
 #import "Organization.h"
 #import "Affiliation.h"
 #import "Correspondence.h"
-
+#import "NSString+Import.h"
 
 @interface NSString (Trimming)
 - (NSString *) stringCleanForCD;
@@ -45,23 +45,13 @@
     
     abstract.aid = abstractID;
     abstract.uuid = [json[@"uuid"] stringCleanForCD];
-    abstract.title = [[json objectForKey:@"title"] stringCleanForCD];
-    abstract.text = [[json objectForKey:@"text"] stringCleanForCD];
-    abstract.acknoledgements = [[json objectForKey:@"acknowledgements"] stringCleanForCD];
-    abstract.conflictOfInterests = [[json objectForKey:@"coi"] stringCleanForCD];
-    abstract.doi = [json objectForKey:@"doi"];
-    abstract.caption = json[@"caption"];
-    
-    NSString *session = [json objectForKey:@"session"];
-    if (session) {
-        abstract.topic = session;
-    } else {
-        abstract.topic = [json objectForKey:@"topic"];
-    }
-    
-    NSNumber *nfigures = [json objectForKey:@"nfigures"];
-    abstract.nfigures = [nfigures intValue];
-    
+    abstract.title = [NSString mkStringForJS:json[@"title"]];
+    abstract.text = [NSString mkStringForJS:json[@"text"]];
+    abstract.acknoledgements = [NSString mkStringForJS:json[@"acknowledgements"]];
+    abstract.conflictOfInterests = [NSString mkStringForJS:json[@"conflictOfInterest"]];
+    abstract.doi = [NSString mkStringForJS:json[@"doi"]];
+    abstract.topic = [NSString mkStringForJS:json[@"topic"]];
+
     return abstract;
 }
 
