@@ -32,7 +32,7 @@
 		E9DD68E515D2669E00063DBF /* BCCN_Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */; };
 		E9DD68E715D266AA00063DBF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD68E615D266AA00063DBF /* WebKit.framework */; };
 		E9DD698F15D4290A00063DBF /* Correspondence+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD698E15D4290A00063DBF /* Correspondence+Create.m */; };
-		E9EFC5B015ECE2AB00E3BA53 /* JSONImporer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC5AF15ECE2AB00E3BA53 /* JSONImporer.m */; };
+		E9EFC5B015ECE2AB00E3BA53 /* JSONImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC5AF15ECE2AB00E3BA53 /* JSONImporter.m */; };
 		E9EFC5B415ECE47C00E3BA53 /* AbstractGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC5B315ECE47C00E3BA53 /* AbstractGroup.m */; };
 /* End PBXBuildFile section */
 
@@ -84,8 +84,8 @@
 		E9DD68E615D266AA00063DBF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		E9DD698D15D4290A00063DBF /* Correspondence+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Correspondence+Create.h"; sourceTree = "<group>"; };
 		E9DD698E15D4290A00063DBF /* Correspondence+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Correspondence+Create.m"; sourceTree = "<group>"; };
-		E9EFC5AE15ECE2AB00E3BA53 /* JSONImporer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONImporer.h; sourceTree = "<group>"; };
-		E9EFC5AF15ECE2AB00E3BA53 /* JSONImporer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONImporer.m; sourceTree = "<group>"; };
+		E9EFC5AE15ECE2AB00E3BA53 /* JSONImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONImporter.h; sourceTree = "<group>"; };
+		E9EFC5AF15ECE2AB00E3BA53 /* JSONImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONImporter.m; sourceTree = "<group>"; };
 		E9EFC5B215ECE47C00E3BA53 /* AbstractGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractGroup.h; sourceTree = "<group>"; };
 		E9EFC5B315ECE47C00E3BA53 /* AbstractGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractGroup.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,8 +151,8 @@
 				E9DD68A615D2625E00063DBF /* AppDelegate.m */,
 				E9EFC5B215ECE47C00E3BA53 /* AbstractGroup.h */,
 				E9EFC5B315ECE47C00E3BA53 /* AbstractGroup.m */,
-				E9EFC5AE15ECE2AB00E3BA53 /* JSONImporer.h */,
-				E9EFC5AF15ECE2AB00E3BA53 /* JSONImporer.m */,
+				E9EFC5AE15ECE2AB00E3BA53 /* JSONImporter.h */,
+				E9EFC5AF15ECE2AB00E3BA53 /* JSONImporter.m */,
 				E9DD68A815D2625E00063DBF /* MainMenu.xib */,
 				E9DD689A15D2625E00063DBF /* Supporting Files */,
 			);
@@ -290,7 +290,7 @@
 				E96241A519A35D4200B189D6 /* Organization+Format.m in Sources */,
 				E9DD698F15D4290A00063DBF /* Correspondence+Create.m in Sources */,
 				E932B56919A2581900CA16A6 /* Affiliation.m in Sources */,
-				E9EFC5B015ECE2AB00E3BA53 /* JSONImporer.m in Sources */,
+				E9EFC5B015ECE2AB00E3BA53 /* JSONImporter.m in Sources */,
 				E9EFC5B415ECE47C00E3BA53 /* AbstractGroup.m in Sources */,
 				E9095781173AA6C700A1B6E0 /* Abstracts.xcdatamodeld in Sources */,
 				E932B57819A2593400CA16A6 /* Author.m in Sources */,

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JSONImporer : NSObject
+@interface JSONImporter : NSObject
 -(id) initWithContext:(NSManagedObjectContext *)context;
 -(BOOL) importAbstracts:(NSData *)data intoGroups:(NSArray *)groups;
 

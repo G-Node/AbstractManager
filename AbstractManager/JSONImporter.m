@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 G-Node. All rights reserved.
 //
 
-#import "JSONImporer.h"
+#import "JSONImporter.h"
 
 #import "Abstract.h"
 #import "Abstract+Create.h"
@@ -21,7 +21,7 @@
 #import "NSString+Import.h"
 #import "Figure.h"
 
-@implementation JSONImporer
+@implementation JSONImporter
 @synthesize context = _context;
 
 -(id) initWithContext:(NSManagedObjectContext *)context {

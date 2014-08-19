@@ -36,7 +36,7 @@
 #import "Organization+Create.h"
 #import "Correspondence+Create.h"
 #import "AbstractGroup.h"
-#import "JSONImporer.h"
+#import "JSONImporter.h"
 
 #import <WebKit/WebKit.h>
 
@@ -354,7 +354,7 @@
         if (result == NSFileHandlingPanelOKButton) {
             NSData *data = [[NSData alloc] initWithContentsOfURL:importDialog.URL];
             
-            JSONImporer *imporer = [[JSONImporer alloc] initWithContext:self.managedObjectContext];
+            JSONImporter *imporer = [[JSONImporter alloc] initWithContext:self.managedObjectContext];
             [imporer importAbstracts:data intoGroups:self.groups];
             
             [self loadDataFromStore];
