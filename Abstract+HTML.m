@@ -9,8 +9,8 @@
 #import "Abstract+HTML.h"
 #import "Author.h"
 #import "Author+Format.h"
-#import "Organization+Format.h"
 #import "Organization.h"
+#import "Organization+Format.h"
 #import "Affiliation.h"
 #import "Correspondence.h"
 
@@ -62,20 +62,9 @@
     [html appendString:@"</h2></div><div id=\"affiliations\">"];
     [html appendFormat:@"<ol>"];
 
-    for (NSUInteger i = 0; i < self.affiliations.count; i++) {
-        Affiliation *affiliation = [self.affiliations objectAtIndex:i];
+    for (Affiliation *affiliation in self.affiliations) {
         Organization *org = affiliation.toOrganization;
-
-        [html appendFormat:@"<li>"];
-
-        if (org.section)
-            [html appendFormat:@"%@, ", org.department];
-
-        if (org.department)
-            [html appendFormat:@"%@, ", org.department];
-
-        [html appendFormat:@"%@, %@", org.name, org.country];
-        [html appendFormat:@"</li>"];
+        [html appendFormat:@"<li>%@</li>", [org mkString]];
     }
 
     [html appendFormat:@"</ol>"];

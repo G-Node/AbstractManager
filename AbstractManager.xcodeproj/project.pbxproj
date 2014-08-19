@@ -177,6 +177,10 @@
 				E932B56819A2581900CA16A6 /* Affiliation.m */,
 				E932B56119A2581800CA16A6 /* Organization.h */,
 				E932B56219A2581800CA16A6 /* Organization.m */,
+				E9DD68DC15D262F700063DBF /* Organization+Create.h */,
+				E9DD68DD15D262F700063DBF /* Organization+Create.m */,
+				E96241A319A35D4200B189D6 /* Organization+Format.h */,
+				E96241A419A35D4200B189D6 /* Organization+Format.m */,
 				E909577F173AA6C700A1B6E0 /* Abstracts.xcdatamodeld */,
 				E932B57619A2593400CA16A6 /* Author.h */,
 				E932B57719A2593400CA16A6 /* Author.m */,
@@ -186,14 +190,10 @@
 				E9DD68D915D262F700063DBF /* Abstract+Create.m */,
 				E9DD68DA15D262F700063DBF /* Author+Create.h */,
 				E9DD68DB15D262F700063DBF /* Author+Create.m */,
-				E9DD68DC15D262F700063DBF /* Organization+Create.h */,
-				E9DD68DD15D262F700063DBF /* Organization+Create.m */,
 				E9DD698D15D4290A00063DBF /* Correspondence+Create.h */,
 				E9DD698E15D4290A00063DBF /* Correspondence+Create.m */,
 				E932B57319A2589F00CA16A6 /* Author+Format.h */,
 				E932B57419A2589F00CA16A6 /* Author+Format.m */,
-				E96241A319A35D4200B189D6 /* Organization+Format.h */,
-				E96241A419A35D4200B189D6 /* Organization+Format.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
