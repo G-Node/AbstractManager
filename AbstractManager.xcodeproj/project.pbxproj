@@ -26,7 +26,6 @@
 		E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68A615D2625E00063DBF /* AppDelegate.m */; };
 		E9DD68AA15D2625E00063DBF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68A815D2625E00063DBF /* MainMenu.xib */; };
 		E9DD68DE15D262F700063DBF /* Abstract+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68D915D262F700063DBF /* Abstract+Create.m */; };
-		E9DD68DF15D262F700063DBF /* Author+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68DB15D262F700063DBF /* Author+Create.m */; };
 		E9DD68E015D262F700063DBF /* Organization+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68DD15D262F700063DBF /* Organization+Create.m */; };
 		E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68E215D265DC00063DBF /* Abstract+HTML.m */; };
 		E9DD68E515D2669E00063DBF /* BCCN_Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */; };
@@ -74,8 +73,6 @@
 		E9DD68A915D2625E00063DBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		E9DD68D815D262F700063DBF /* Abstract+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Abstract+Create.h"; path = "../Abstract+Create.h"; sourceTree = "<group>"; };
 		E9DD68D915D262F700063DBF /* Abstract+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Abstract+Create.m"; path = "../Abstract+Create.m"; sourceTree = "<group>"; };
-		E9DD68DA15D262F700063DBF /* Author+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Author+Create.h"; path = "../Author+Create.h"; sourceTree = "<group>"; };
-		E9DD68DB15D262F700063DBF /* Author+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Author+Create.m"; path = "../Author+Create.m"; sourceTree = "<group>"; };
 		E9DD68DC15D262F700063DBF /* Organization+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Organization+Create.h"; path = "../Organization+Create.h"; sourceTree = "<group>"; };
 		E9DD68DD15D262F700063DBF /* Organization+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Organization+Create.m"; path = "../Organization+Create.m"; sourceTree = "<group>"; };
 		E9DD68E115D265DC00063DBF /* Abstract+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Abstract+HTML.h"; path = "../Abstract+HTML.h"; sourceTree = "<group>"; };
@@ -198,8 +195,6 @@
 				E9DD68E215D265DC00063DBF /* Abstract+HTML.m */,
 				E9DD68D815D262F700063DBF /* Abstract+Create.h */,
 				E9DD68D915D262F700063DBF /* Abstract+Create.m */,
-				E9DD68DA15D262F700063DBF /* Author+Create.h */,
-				E9DD68DB15D262F700063DBF /* Author+Create.m */,
 				E9DD698D15D4290A00063DBF /* Correspondence+Create.h */,
 				E9DD698E15D4290A00063DBF /* Correspondence+Create.m */,
 				E932B57319A2589F00CA16A6 /* Author+Format.h */,
@@ -281,7 +276,6 @@
 				E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */,
 				E9DD68DE15D262F700063DBF /* Abstract+Create.m in Sources */,
 				E932B56F19A2581900CA16A6 /* Correspondence.m in Sources */,
-				E9DD68DF15D262F700063DBF /* Author+Create.m in Sources */,
 				E96241B619A36C7400B189D6 /* Figure.m in Sources */,
 				E9DD68E015D262F700063DBF /* Organization+Create.m in Sources */,
 				E932B57B19A25D0800CA16A6 /* NSString+Import.m in Sources */,

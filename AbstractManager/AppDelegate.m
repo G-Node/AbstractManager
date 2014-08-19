@@ -30,7 +30,6 @@
 #import "Abstract+Create.h"
 #import "Abstract+HTML.h"
 #import "Author.h"
-#import "Author+Create.h"
 #import "Author+Format.h"
 #import "Affiliation.h"
 #import "Organization+Create.h"

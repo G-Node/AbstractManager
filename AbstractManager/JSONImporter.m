@@ -12,7 +12,6 @@
 #import "Abstract+Create.h"
 #import "Abstract+HTML.h"
 #import "Author.h"
-#import "Author+Create.h"
 #import "Affiliation.h"
 #import "Organization+Create.h"
 #import "Correspondence+Create.h"
@@ -20,6 +19,10 @@
 #import "Reference.h"
 #import "NSString+Import.h"
 #import "Figure.h"
+
+@interface JSONImporter ()
+-(id) openObj:(NSString *)objname WithUUID:(NSString *)uuid;
+@end
 
 @implementation JSONImporter
 @synthesize context = _context;
@@ -31,6 +34,26 @@
     }
     
     return self;
+}
+
+-(id) openObj:(NSString *)objname WithUUID:(NSString *)uuid
+{
+    NSManagedObjectContext *context = self.context;
+
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:objname];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"uuid == %@", uuid];
+    request.predicate = predicate;
+    NSArray *result = [context executeFetchRequest:request error:nil];
+
+    if (result.count > 0) {
+        //Assert it is really only one obj
+        return [result objectAtIndex:0];
+    }
+
+    id obj = [NSEntityDescription insertNewObjectForEntityForName:objname
+                                           inManagedObjectContext:context];
+    [obj setValue:uuid forKey:@"uuid"];
+    return obj;
 }
 
 - (BOOL) importAbstracts:(NSData *)data intoGroups:(NSArray *)groups
@@ -100,8 +123,13 @@
         
         NSMutableOrderedSet *authorSet = [[NSMutableOrderedSet alloc] init];
         for (NSDictionary *authorDict in authors) {
-            Author *author = [Author findOrCreateforDict:authorDict
-                                        inManagedContext:context];
+            Author *author = [self openObj:@"Author"
+                                  WithUUID:authorDict[@"uuid"]];
+
+            author.firstName = [NSString mkStringForJS:authorDict[@"firstName"]];
+            author.lastName = [NSString mkStringForJS:authorDict[@"lastName"]];
+            author.middleName = [NSString mkStringForJS:authorDict[@"middleName"]];
+
             [authorSet addObject:author];
 
             NSMutableSet *afbuilder = [[NSMutableSet alloc] init];
