@@ -10,13 +10,14 @@
 		E9095781173AA6C700A1B6E0 /* Abstracts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E909577F173AA6C700A1B6E0 /* Abstracts.xcdatamodeld */; };
 		E932B56319A2581800CA16A6 /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B56219A2581800CA16A6 /* Organization.m */; };
 		E932B56919A2581900CA16A6 /* Affiliation.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B56819A2581900CA16A6 /* Affiliation.m */; };
-		E932B56C19A2581900CA16A6 /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B56B19A2581900CA16A6 /* Abstract.m */; };
 		E932B56F19A2581900CA16A6 /* Correspondence.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B56E19A2581900CA16A6 /* Correspondence.m */; };
 		E932B57519A2589F00CA16A6 /* Author+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B57419A2589F00CA16A6 /* Author+Format.m */; };
 		E932B57819A2593400CA16A6 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B57719A2593400CA16A6 /* Author.m */; };
 		E932B57B19A25D0800CA16A6 /* NSString+Import.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B57A19A25D0800CA16A6 /* NSString+Import.m */; };
 		E96241A519A35D4200B189D6 /* Organization+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = E96241A419A35D4200B189D6 /* Organization+Format.m */; };
 		E96241A719A35E2300B189D6 /* Abstract.css in Resources */ = {isa = PBXBuildFile; fileRef = E96241A619A35E2300B189D6 /* Abstract.css */; };
+		E96241B019A366DC00B189D6 /* Abstract.m in Sources */ = {isa = PBXBuildFile; fileRef = E96241AF19A366DC00B189D6 /* Abstract.m */; };
+		E96241B319A366DC00B189D6 /* Reference.m in Sources */ = {isa = PBXBuildFile; fileRef = E96241B219A366DC00B189D6 /* Reference.m */; };
 		E9DD689415D2625E00063DBF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD689315D2625E00063DBF /* Cocoa.framework */; };
 		E9DD689E15D2625E00063DBF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9DD689C15D2625E00063DBF /* InfoPlist.strings */; };
 		E9DD68A015D2625E00063DBF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD689F15D2625E00063DBF /* main.m */; };
@@ -40,8 +41,6 @@
 		E932B56219A2581800CA16A6 /* Organization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
 		E932B56719A2581900CA16A6 /* Affiliation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Affiliation.h; sourceTree = "<group>"; };
 		E932B56819A2581900CA16A6 /* Affiliation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Affiliation.m; sourceTree = "<group>"; };
-		E932B56A19A2581900CA16A6 /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
-		E932B56B19A2581900CA16A6 /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
 		E932B56D19A2581900CA16A6 /* Correspondence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Correspondence.h; sourceTree = "<group>"; };
 		E932B56E19A2581900CA16A6 /* Correspondence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Correspondence.m; sourceTree = "<group>"; };
 		E932B57319A2589F00CA16A6 /* Author+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Author+Format.h"; sourceTree = "<group>"; };
@@ -53,6 +52,10 @@
 		E96241A319A35D4200B189D6 /* Organization+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Organization+Format.h"; sourceTree = "<group>"; };
 		E96241A419A35D4200B189D6 /* Organization+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Organization+Format.m"; sourceTree = "<group>"; };
 		E96241A619A35E2300B189D6 /* Abstract.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Abstract.css; sourceTree = SOURCE_ROOT; };
+		E96241AE19A366DC00B189D6 /* Abstract.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Abstract.h; sourceTree = "<group>"; };
+		E96241AF19A366DC00B189D6 /* Abstract.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Abstract.m; sourceTree = "<group>"; };
+		E96241B119A366DC00B189D6 /* Reference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reference.h; sourceTree = "<group>"; };
+		E96241B219A366DC00B189D6 /* Reference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reference.m; sourceTree = "<group>"; };
 		E9DD688F15D2625E00063DBF /* AbstractManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbstractManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9DD689315D2625E00063DBF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		E9DD689615D2625E00063DBF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -169,10 +172,13 @@
 		E9DD68BF15D262A100063DBF /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				E96241B119A366DC00B189D6 /* Reference.h */,
+				E96241B219A366DC00B189D6 /* Reference.m */,
+				E96241AE19A366DC00B189D6 /* Abstract.h */,
+				E96241AF19A366DC00B189D6 /* Abstract.m */,
+				E909577F173AA6C700A1B6E0 /* Abstracts.xcdatamodeld */,
 				E932B56D19A2581900CA16A6 /* Correspondence.h */,
 				E932B56E19A2581900CA16A6 /* Correspondence.m */,
-				E932B56A19A2581900CA16A6 /* Abstract.h */,
-				E932B56B19A2581900CA16A6 /* Abstract.m */,
 				E932B56719A2581900CA16A6 /* Affiliation.h */,
 				E932B56819A2581900CA16A6 /* Affiliation.m */,
 				E932B56119A2581800CA16A6 /* Organization.h */,
@@ -181,7 +187,6 @@
 				E9DD68DD15D262F700063DBF /* Organization+Create.m */,
 				E96241A319A35D4200B189D6 /* Organization+Format.h */,
 				E96241A419A35D4200B189D6 /* Organization+Format.m */,
-				E909577F173AA6C700A1B6E0 /* Abstracts.xcdatamodeld */,
 				E932B57619A2593400CA16A6 /* Author.h */,
 				E932B57719A2593400CA16A6 /* Author.m */,
 				E9DD68E115D265DC00063DBF /* Abstract+HTML.h */,
@@ -264,7 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E932B56C19A2581900CA16A6 /* Abstract.m in Sources */,
+				E96241B319A366DC00B189D6 /* Reference.m in Sources */,
 				E932B57519A2589F00CA16A6 /* Author+Format.m in Sources */,
 				E9DD68A015D2625E00063DBF /* main.m in Sources */,
 				E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */,
@@ -272,6 +277,7 @@
 				E932B56F19A2581900CA16A6 /* Correspondence.m in Sources */,
 				E9DD68DF15D262F700063DBF /* Author+Create.m in Sources */,
 				E9DD68E015D262F700063DBF /* Organization+Create.m in Sources */,
+				E96241B019A366DC00B189D6 /* Abstract.m in Sources */,
 				E932B57B19A25D0800CA16A6 /* NSString+Import.m in Sources */,
 				E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */,
 				E932B56319A2581800CA16A6 /* Organization.m in Sources */,

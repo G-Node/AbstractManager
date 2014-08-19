@@ -13,6 +13,7 @@
 #import "Organization+Format.h"
 #import "Affiliation.h"
 #import "Correspondence.h"
+#import "Reference.h"
 
 @implementation NSString(HTML)
 
@@ -78,8 +79,28 @@
     if (self.acknoledgements && self.acknoledgements.length)
         [html appendFormat:@"<div class=\"appendix\"><h4>Acknowledgements</h4><p>%@</p></div>", [self.acknoledgements formatHTML]];
 
-    if (self.references && self.references.length)
-        [html appendFormat:@"<div class=\"appendix\"><p><h4>References</h4><p>%@</p></div>", [self.references formatHTML]];
+    if (self.references && self.references.count) {
+        [html appendFormat:@"<div class=\"appendix\"><p><h4>References</h4><ol>"];
+        for (Reference *ref in self.references) {
+            NSString *link = nil;
+            if (ref.link) {
+                link = ref.link;
+            } else if (ref.doi) {
+                link = ref.doi;
+            } else {
+                link = @"";
+            }
+
+            [html appendString:@"<li>"];
+            [html appendFormat:@"<a href=\"%@\">%@</a>", link, ref.text];
+            if (ref.doi) {
+                [html appendFormat:@"<a href=\"http://dx.doi.org/%@\">%@</a>", ref.doi, ref.doi];
+            }
+            [html appendString:@"</li>"];
+
+        }
+        [html appendString:@"</ol></div>"];
+    }
 
     NSArray *legitFormats = @[ @"tiff", @"png", @"jpeg", @"pdf"];
     if (self.nfigures) {

@@ -17,6 +17,8 @@
 #import "Organization+Create.h"
 #import "Correspondence+Create.h"
 #import "AbstractGroup.h"
+#import "Reference.h"
+#import "NSString+Import.h"
 
 @implementation JSONImporer
 @synthesize context = _context;
@@ -126,13 +128,26 @@
                 [afbuilder addObject:affiliation];
             }
 
-            author.isAffiliatedTo = [afbuilder copy];
+            author.isAffiliatedTo = afbuilder;
         }
         
         if (authorSet.count > 0)
             abstract.authors = authorSet;
 
+        //References
+        NSMutableOrderedSet *refs = [[NSMutableOrderedSet alloc] init];
+        for(NSDictionary *refDict in absDict[@"references"]) {
+            Reference *ref = [NSEntityDescription insertNewObjectForEntityForName:@"Reference"
+                                                           inManagedObjectContext:context];
+            ref.uuid = [NSString mkStringForJS:refDict[@"uuid"]];
+            ref.link = [NSString mkStringForJS:refDict[@"link"]];
+            ref.doi = [NSString mkStringForJS:refDict[@"doi"]];
+            ref.text = [NSString mkStringForJS:refDict[@"text"]];
 
+            [refs addObject:ref];
+        }
+
+        abstract.references = refs;
     }
     
     return YES;

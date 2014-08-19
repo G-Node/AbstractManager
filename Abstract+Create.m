@@ -48,7 +48,6 @@
     abstract.title = [[json objectForKey:@"title"] stringCleanForCD];
     abstract.text = [[json objectForKey:@"text"] stringCleanForCD];
     abstract.acknoledgements = [[json objectForKey:@"acknowledgements"] stringCleanForCD];
-    abstract.references = [[json objectForKey:@"refs"] stringCleanForCD];
     abstract.conflictOfInterests = [[json objectForKey:@"coi"] stringCleanForCD];
     abstract.doi = [json objectForKey:@"doi"];
     abstract.figid = [json[@"figid"] integerValue];

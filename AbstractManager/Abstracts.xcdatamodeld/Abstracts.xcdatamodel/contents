@@ -11,7 +11,6 @@
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="nfigures" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="references" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="session" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
@@ -21,6 +20,7 @@
         <relationship name="affiliations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Affiliation" inverseName="forAbstract" inverseEntity="Affiliation" syncable="YES"/>
         <relationship name="authors" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Author" inverseName="wroteAbstract" inverseEntity="Author" syncable="YES"/>
         <relationship name="correspondenceAt" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Correspondence" inverseName="forAbstract" inverseEntity="Correspondence" syncable="YES"/>
+        <relationship name="references" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Reference" inverseName="ofAbstract" inverseEntity="Reference" syncable="YES"/>
     </entity>
     <entity name="Affiliation" representedClassName="Affiliation" syncable="YES">
         <relationship name="forAbstract" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Abstract" inverseName="affiliations" inverseEntity="Abstract" syncable="YES"/>
@@ -51,11 +51,19 @@
         <attribute name="uuid" attributeType="String" syncable="YES"/>
         <relationship name="members" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Affiliation" inverseName="toOrganization" inverseEntity="Affiliation" syncable="YES"/>
     </entity>
+    <entity name="Reference" representedClassName="Reference" syncable="YES">
+        <attribute name="doi" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="link" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" attributeType="String" syncable="YES"/>
+        <relationship name="ofAbstract" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Abstract" inverseName="references" inverseEntity="Abstract" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Abstract" positionX="0" positionY="0" width="128" height="345"/>
         <element name="Affiliation" positionX="250" positionY="-27" width="128" height="90"/>
         <element name="Author" positionX="259" positionY="-378" width="128" height="163"/>
         <element name="Correspondence" positionX="340" positionY="171" width="128" height="90"/>
         <element name="Organization" positionX="475" positionY="0" width="128" height="150"/>
+        <element name="Reference" positionX="207" positionY="-225" width="128" height="118"/>
     </elements>
 </model>

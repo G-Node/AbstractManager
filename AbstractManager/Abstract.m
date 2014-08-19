@@ -2,7 +2,7 @@
 //  Abstract.m
 //  AbstractManager
 //
-//  Created by Christian Kellner on 18/08/14.
+//  Created by Christian Kellner on 19/08/14.
 //  Copyright (c) 2014 G-Node. All rights reserved.
 //
 
@@ -10,6 +10,7 @@
 #import "Affiliation.h"
 #import "Author.h"
 #import "Correspondence.h"
+#import "Reference.h"
 
 
 @implementation Abstract
@@ -24,7 +25,6 @@
 @dynamic isFavorite;
 @dynamic nfigures;
 @dynamic notes;
-@dynamic references;
 @dynamic session;
 @dynamic text;
 @dynamic title;
@@ -34,5 +34,6 @@
 @dynamic affiliations;
 @dynamic authors;
 @dynamic correspondenceAt;
+@dynamic references;
 
 @end

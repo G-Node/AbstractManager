@@ -2,14 +2,14 @@
 //  Abstract.h
 //  AbstractManager
 //
-//  Created by Christian Kellner on 18/08/14.
+//  Created by Christian Kellner on 19/08/14.
 //  Copyright (c) 2014 G-Node. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Affiliation, Author, Correspondence;
+@class Affiliation, Author, Correspondence, Reference;
 
 @interface Abstract : NSManagedObject
 
@@ -23,7 +23,6 @@
 @property (nonatomic) BOOL isFavorite;
 @property (nonatomic) int32_t nfigures;
 @property (nonatomic, retain) NSString * notes;
-@property (nonatomic, retain) NSString * references;
 @property (nonatomic, retain) NSString * session;
 @property (nonatomic, retain) NSString * text;
 @property (nonatomic, retain) NSString * title;
@@ -33,6 +32,7 @@
 @property (nonatomic, retain) NSOrderedSet *affiliations;
 @property (nonatomic, retain) NSOrderedSet *authors;
 @property (nonatomic, retain) NSSet *correspondenceAt;
+@property (nonatomic, retain) NSOrderedSet *references;
 @end
 
 @interface Abstract (CoreDataGeneratedAccessors)
@@ -62,4 +62,14 @@
 - (void)addCorrespondenceAt:(NSSet *)values;
 - (void)removeCorrespondenceAt:(NSSet *)values;
 
+- (void)insertObject:(Reference *)value inReferencesAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromReferencesAtIndex:(NSUInteger)idx;
+- (void)insertReferences:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeReferencesAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInReferencesAtIndex:(NSUInteger)idx withObject:(Reference *)value;
+- (void)replaceReferencesAtIndexes:(NSIndexSet *)indexes withReferences:(NSArray *)values;
+- (void)addReferencesObject:(Reference *)value;
+- (void)removeReferencesObject:(Reference *)value;
+- (void)addReferences:(NSOrderedSet *)values;
+- (void)removeReferences:(NSOrderedSet *)values;
 @end
