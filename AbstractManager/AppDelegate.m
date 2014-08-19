@@ -27,7 +27,6 @@
 #import "AppDelegate.h"
 
 #import "Abstract.h"
-#import "Abstract+Create.h"
 #import "Abstract+HTML.h"
 #import "Author.h"
 #import "Author+Format.h"

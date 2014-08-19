@@ -13,7 +13,6 @@
 		E932B56F19A2581900CA16A6 /* Correspondence.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B56E19A2581900CA16A6 /* Correspondence.m */; };
 		E932B57519A2589F00CA16A6 /* Author+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B57419A2589F00CA16A6 /* Author+Format.m */; };
 		E932B57819A2593400CA16A6 /* Author.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B57719A2593400CA16A6 /* Author.m */; };
-		E932B57B19A25D0800CA16A6 /* NSString+Import.m in Sources */ = {isa = PBXBuildFile; fileRef = E932B57A19A25D0800CA16A6 /* NSString+Import.m */; };
 		E96241A519A35D4200B189D6 /* Organization+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = E96241A419A35D4200B189D6 /* Organization+Format.m */; };
 		E96241A719A35E2300B189D6 /* Abstract.css in Resources */ = {isa = PBXBuildFile; fileRef = E96241A619A35E2300B189D6 /* Abstract.css */; };
 		E96241B319A366DC00B189D6 /* Reference.m in Sources */ = {isa = PBXBuildFile; fileRef = E96241B219A366DC00B189D6 /* Reference.m */; };
@@ -25,11 +24,9 @@
 		E9DD68A415D2625E00063DBF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68A215D2625E00063DBF /* Credits.rtf */; };
 		E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68A615D2625E00063DBF /* AppDelegate.m */; };
 		E9DD68AA15D2625E00063DBF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68A815D2625E00063DBF /* MainMenu.xib */; };
-		E9DD68DE15D262F700063DBF /* Abstract+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68D915D262F700063DBF /* Abstract+Create.m */; };
 		E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD68E215D265DC00063DBF /* Abstract+HTML.m */; };
 		E9DD68E515D2669E00063DBF /* BCCN_Logo.icns in Resources */ = {isa = PBXBuildFile; fileRef = E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */; };
 		E9DD68E715D266AA00063DBF /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9DD68E615D266AA00063DBF /* WebKit.framework */; };
-		E9DD698F15D4290A00063DBF /* Correspondence+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = E9DD698E15D4290A00063DBF /* Correspondence+Create.m */; };
 		E9EFC5B015ECE2AB00E3BA53 /* JSONImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC5AF15ECE2AB00E3BA53 /* JSONImporter.m */; };
 		E9EFC5B415ECE47C00E3BA53 /* AbstractGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC5B315ECE47C00E3BA53 /* AbstractGroup.m */; };
 /* End PBXBuildFile section */
@@ -46,8 +43,6 @@
 		E932B57419A2589F00CA16A6 /* Author+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Author+Format.m"; sourceTree = "<group>"; };
 		E932B57619A2593400CA16A6 /* Author.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Author.h; sourceTree = "<group>"; };
 		E932B57719A2593400CA16A6 /* Author.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Author.m; sourceTree = "<group>"; };
-		E932B57919A25D0800CA16A6 /* NSString+Import.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Import.h"; sourceTree = "<group>"; };
-		E932B57A19A25D0800CA16A6 /* NSString+Import.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Import.m"; sourceTree = "<group>"; };
 		E96241A319A35D4200B189D6 /* Organization+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Organization+Format.h"; sourceTree = "<group>"; };
 		E96241A419A35D4200B189D6 /* Organization+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Organization+Format.m"; sourceTree = "<group>"; };
 		E96241A619A35E2300B189D6 /* Abstract.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Abstract.css; sourceTree = SOURCE_ROOT; };
@@ -70,14 +65,10 @@
 		E9DD68A515D2625E00063DBF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9DD68A615D2625E00063DBF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		E9DD68A915D2625E00063DBF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		E9DD68D815D262F700063DBF /* Abstract+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Abstract+Create.h"; path = "../Abstract+Create.h"; sourceTree = "<group>"; };
-		E9DD68D915D262F700063DBF /* Abstract+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Abstract+Create.m"; path = "../Abstract+Create.m"; sourceTree = "<group>"; };
 		E9DD68E115D265DC00063DBF /* Abstract+HTML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Abstract+HTML.h"; path = "../Abstract+HTML.h"; sourceTree = "<group>"; };
 		E9DD68E215D265DC00063DBF /* Abstract+HTML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Abstract+HTML.m"; path = "../Abstract+HTML.m"; sourceTree = "<group>"; };
 		E9DD68E415D2669E00063DBF /* BCCN_Logo.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = BCCN_Logo.icns; sourceTree = "<group>"; };
 		E9DD68E615D266AA00063DBF /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		E9DD698D15D4290A00063DBF /* Correspondence+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Correspondence+Create.h"; sourceTree = "<group>"; };
-		E9DD698E15D4290A00063DBF /* Correspondence+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Correspondence+Create.m"; sourceTree = "<group>"; };
 		E9EFC5AE15ECE2AB00E3BA53 /* JSONImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONImporter.h; sourceTree = "<group>"; };
 		E9EFC5AF15ECE2AB00E3BA53 /* JSONImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONImporter.m; sourceTree = "<group>"; };
 		E9EFC5B215ECE47C00E3BA53 /* AbstractGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractGroup.h; sourceTree = "<group>"; };
@@ -138,8 +129,6 @@
 		E9DD689915D2625E00063DBF /* AbstractManager */ = {
 			isa = PBXGroup;
 			children = (
-				E932B57919A25D0800CA16A6 /* NSString+Import.h */,
-				E932B57A19A25D0800CA16A6 /* NSString+Import.m */,
 				E9DD68BF15D262A100063DBF /* CoreData */,
 				E9DD68A515D2625E00063DBF /* AppDelegate.h */,
 				E9DD68A615D2625E00063DBF /* AppDelegate.m */,
@@ -188,10 +177,6 @@
 				E932B57719A2593400CA16A6 /* Author.m */,
 				E9DD68E115D265DC00063DBF /* Abstract+HTML.h */,
 				E9DD68E215D265DC00063DBF /* Abstract+HTML.m */,
-				E9DD68D815D262F700063DBF /* Abstract+Create.h */,
-				E9DD68D915D262F700063DBF /* Abstract+Create.m */,
-				E9DD698D15D4290A00063DBF /* Correspondence+Create.h */,
-				E9DD698E15D4290A00063DBF /* Correspondence+Create.m */,
 				E932B57319A2589F00CA16A6 /* Author+Format.h */,
 				E932B57419A2589F00CA16A6 /* Author+Format.m */,
 			);
@@ -269,14 +254,11 @@
 				E932B57519A2589F00CA16A6 /* Author+Format.m in Sources */,
 				E9DD68A015D2625E00063DBF /* main.m in Sources */,
 				E9DD68A715D2625E00063DBF /* AppDelegate.m in Sources */,
-				E9DD68DE15D262F700063DBF /* Abstract+Create.m in Sources */,
 				E932B56F19A2581900CA16A6 /* Correspondence.m in Sources */,
 				E96241B619A36C7400B189D6 /* Figure.m in Sources */,
-				E932B57B19A25D0800CA16A6 /* NSString+Import.m in Sources */,
 				E9DD68E315D265DC00063DBF /* Abstract+HTML.m in Sources */,
 				E932B56319A2581800CA16A6 /* Organization.m in Sources */,
 				E96241A519A35D4200B189D6 /* Organization+Format.m in Sources */,
-				E9DD698F15D4290A00063DBF /* Correspondence+Create.m in Sources */,
 				E932B56919A2581900CA16A6 /* Affiliation.m in Sources */,
 				E9EFC5B015ECE2AB00E3BA53 /* JSONImporter.m in Sources */,
 				E9EFC5B415ECE47C00E3BA53 /* AbstractGroup.m in Sources */,

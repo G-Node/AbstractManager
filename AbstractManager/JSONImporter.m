@@ -9,15 +9,34 @@
 #import "JSONImporter.h"
 
 #import "Abstract.h"
-#import "Abstract+Create.h"
 #import "Abstract+HTML.h"
 #import "Author.h"
 #import "Affiliation.h"
 #import "AbstractGroup.h"
 #import "Organization.h"
 #import "Reference.h"
-#import "NSString+Import.h"
 #import "Figure.h"
+
+
+//******************************************************************************
+@interface NSString (Import)
++(NSString *)mkStringForJS:(id) val;
+@end
+
+@implementation NSString (Import)
++(NSString *)mkStringForJS:(id) val
+{
+    NSNull *null = [NSNull null];
+
+    if (val == nil || val == null) {
+        return nil;
+    }
+
+    return [val stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
+@end
+//******************************************************************************
 
 @interface JSONImporter ()
 -(id) openObj:(NSString *)objname WithUUID:(NSString *)uuid;
@@ -85,7 +104,17 @@
             aid = abstractIndex + 1;
         }
 
-        Abstract *abstract = [Abstract abstractForJSON:absDict withId:aid inManagedObjectContext:context];
+        NSString *uuid = absDict[@"uuid"];
+        Abstract *abstract = [self openObj:@"Abstract" WithUUID:uuid];
+
+        abstract.aid = aid;
+        abstract.title = [NSString mkStringForJS:absDict[@"title"]];
+        abstract.text = [NSString mkStringForJS:absDict[@"text"]];
+        abstract.acknoledgements = [NSString mkStringForJS:absDict[@"acknowledgements"]];
+        abstract.conflictOfInterests = [NSString mkStringForJS:absDict[@"conflictOfInterest"]];
+        abstract.doi = [NSString mkStringForJS:absDict[@"doi"]];
+        abstract.topic = [NSString mkStringForJS:absDict[@"topic"]];
+
         NSLog(@"NEW: %@\n", [absDict objectForKey:@"title"]);
         if (abstractIndex > [group.abstracts count]) {
             NSLog(@"%d,%ld", aid, group.abstracts.count);
